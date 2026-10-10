@@ -64,7 +64,7 @@ code { font-family: var(--mono); font-size: .86em; background: var(--soft); bord
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
 .logo { width: 28px; height: 28px; flex: none; }
-.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+.nav-links { display: flex; align-items: center; gap: 26px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { text-decoration: none; color: var(--muted); font-size: .95rem; font-weight: 500; transition: color .2s; }
 .nav-links a:hover { color: var(--ink); }
 .nav-cta { display: flex; align-items: center; gap: 12px; }
@@ -431,11 +431,40 @@ footer p a { color: var(--muted); }
   .hero-app { transform: none; }
   .progress { display: none; }
 }
+
+/* Entrepreneurial touches */
+.announce { position: relative; z-index: 61; background: var(--ink); color: #fff; font-size: .86rem; text-align: center; padding: 9px 44px; }
+.announce a { color: #fff; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.announce a:hover { text-decoration: underline; }
+.announce .new { font-size: .68rem; font-weight: 700; letter-spacing: .08em; background: var(--blue); border-radius: 999px; padding: 2px 8px; }
+.announce button { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border: 0; border-radius: 6px; background: transparent; color: #fff; font-size: 1.1rem; cursor: pointer; opacity: .7; }
+.announce button:hover { opacity: 1; background: rgba(255, 255, 255, .1); }
+.assure { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; list-style: none; padding: 0; }
+.assure li { display: flex; align-items: center; gap: 6px; font-size: .86rem; color: var(--muted); }
+.assure svg { color: var(--green); flex: none; }
+.founder { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 56px; align-items: center; }
+.founder .copy { display: grid; gap: 20px; }
+.mission { font-size: clamp(1.25rem, 2.2vw, 1.55rem); line-height: 1.45; color: var(--ink); font-weight: 500; letter-spacing: -0.01em; }
+.mission em { font-style: normal; color: var(--blue); }
+.note-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; box-shadow: var(--shadow-lg); display: grid; gap: 18px; position: relative; }
+.note-card::before { content: "“"; position: absolute; top: -18px; left: 24px; font-size: 5rem; line-height: 1; color: var(--blue); font-weight: 700; opacity: .9; }
+.note-card p { color: var(--ink); }
+.sig { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.sig .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; flex: none; }
+.sig b { display: block; font-size: .95rem; }
+.sig small { color: var(--muted); font-size: .85rem; }
+.principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 56px; }
+.principle { border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px; background: var(--white); display: grid; gap: 8px; align-content: start; transition: transform .3s cubic-bezier(.2, .7, .2, 1), box-shadow .3s; }
+.principle:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.principle .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; }
+@media (max-width: 1020px) { .founder { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 720px) { .principles { grid-template-columns: minmax(0, 1fr); margin-top: 40px; } .announce { font-size: .8rem; padding-left: 16px; } }
 </style>
 </head>
 <body>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
+<div class="announce" id="announce"><a href="#plans"><span class="new">LAUNCH</span>Launch pricing: Flash Analyst Basic is $49 (regular $79) →</a><button type="button" id="announce-close" aria-label="Hide announcement">×</button></div>
 <header class="nav" id="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Flash Analyst home">
@@ -449,6 +478,7 @@ footer p a { color: var(--muted); }
         <li><a href="#pro">Pro</a></li>
         <li><a href="#plans">Plans</a></li>
         <li><a href="#samples">Samples</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -464,6 +494,7 @@ footer p a { color: var(--muted); }
       <li><a href="#pro">Pro</a></li>
       <li><a href="#plans">Plans</a></li>
       <li><a href="#samples">Samples</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a class="btn btn-primary" href="#plans">Get Flash Analyst</a></li>
     </ul>
@@ -484,6 +515,11 @@ footer p a { color: var(--muted); }
         <a class="btn btn-primary btn-lg" href="#plans">Get Flash Analyst</a>
         <a class="btn btn-secondary btn-lg" href="#samples">See sample reports</a>
       </div>
+      <ul class="assure">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Pay once, no subscription</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Your data stays on your computer</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Free sample reports</li>
+      </ul>
       <div class="proof">
         <div><b>&lt; 1 sec</b>per report</div>
         <div><b data-count="12" data-dec="0">12</b>key ratios</div>
@@ -826,6 +862,31 @@ footer p a { color: var(--muted); }
   </div>
 </section>
 
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="founder">
+      <div class="copy">
+        <p class="eyebrow">Why Flash Analyst exists</p>
+        <h2>Big-company analysis, built for everyone else</h2>
+        <p class="mission">Every business owner deserves to know how their company is really doing, without hiring an analyst or losing a weekend to spreadsheets. Flash Analyst turns the numbers you already have into a <em>clear, professional report in seconds</em>.</p>
+      </div>
+      <div class="note-card">
+        <p>Flash Analyst is an independent product, built and supported by its founder. There's no call centre and no sales team. When you email, you talk to the person who built it, and your feedback shapes what comes next.</p>
+        <div class="sig">
+          <span class="avatar" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 28 28"><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg></span>
+          <span><b>Founder, Flash Analyst</b><small>georgesfc421@gmail.com</small></span>
+        </div>
+        <a class="btn btn-secondary" href="mailto:georgesfc421@gmail.com?subject=Hello%20from%20the%20Flash%20Analyst%20website">Talk to the founder</a>
+      </div>
+    </div>
+    <div class="principles">
+      <div class="principle"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7z"/></svg></span><h3>Fast</h3><p>A finished report in under a second, so you spend your time deciding instead of copying numbers.</p></div>
+      <div class="principle"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Private</h3><p>It runs on your own computer. Your company's figures are never uploaded to us.</p></div>
+      <div class="principle"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span><h3>Fair</h3><p>One price, paid once. No subscription and nothing hidden in the small print.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="section soft" id="faq">
   <div class="wrap">
     <div class="head">
@@ -896,6 +957,7 @@ footer p a { color: var(--muted); }
         <a href="#how">How it works</a>
         <a href="#plans">Plans</a>
         <a href="#samples">Samples</a>
+        <a href="#about">About</a>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </nav>
@@ -925,6 +987,14 @@ footer p a { color: var(--muted); }
   menu.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
   window.addEventListener("resize", () => { if (window.innerWidth > 1020) setMenu(false); });
+
+  // Launch banner can be hidden; remembered for this visitor
+  const announce = document.getElementById("announce");
+  try { if (localStorage.getItem("fa-hide-announce") === "1") announce.hidden = true; } catch (e) {}
+  document.getElementById("announce-close").addEventListener("click", () => {
+    announce.hidden = true;
+    try { localStorage.setItem("fa-hide-announce", "1"); } catch (e) {}
+  });
 
   // Report tabs
   const tabs = [...document.querySelectorAll('.tablist [role="tab"]')];
@@ -992,7 +1062,7 @@ footer p a { color: var(--muted); }
 
     // Sections slide up as they come into view
     if ("IntersectionObserver" in window) {
-      const targets = document.querySelectorAll(".section .head, .timeline li, .report > *, .split > *, .score-layout > *, #pro .app, .plan, .dl, .faq details, .convert .box");
+      const targets = document.querySelectorAll(".section .head, .timeline li, .report > *, .split > *, .score-layout > *, #pro .app, .plan, .dl, .faq details, .convert .box, .founder > *, .principle");
       const io = new IntersectionObserver(entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
       }), { rootMargin: "0px 0px -8% 0px" });
