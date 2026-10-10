@@ -393,10 +393,49 @@ footer p a { color: var(--muted); }
   .marquee .apps:last-child { display: none; }
   .marquee .apps { flex-wrap: wrap; }
 }
+
+/* More motion */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; transform-origin: left; transform: scaleX(0);
+  background: linear-gradient(90deg, #4263EB, #7C93FF); }
+.blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(60px); opacity: .55; pointer-events: none; }
+.blob.b1 { width: 340px; height: 340px; background: #C5D0FF; right: 4%; top: 6%; animation: drift1 16s ease-in-out infinite alternate; }
+.blob.b2 { width: 260px; height: 260px; background: #D9F2E6; right: 28%; bottom: 4%; animation: drift2 19s ease-in-out infinite alternate; }
+.blob.b3 { width: 200px; height: 200px; background: #E7DEFF; left: 30%; top: 10%; animation: drift1 22s ease-in-out -6s infinite alternate; }
+@keyframes drift1 { to { transform: translate(-60px, 50px) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(70px, -40px) scale(.9); } }
+.hero .wrap { perspective: 1400px; }
+.hero-app { transform: rotateX(var(--tilt, 0deg)) rotateY(var(--tilt-y, 0deg)); transform-origin: 50% 0; transition: transform .2s linear; will-change: transform; }
+.timeline li, .plan, .grades, .table-box { transition: transform .3s cubic-bezier(.2, .7, .2, 1), box-shadow .3s; }
+.timeline li:hover .ico { transform: translateY(-3px) rotate(-6deg); }
+.timeline .ico { transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+.plan:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.plan.featured { position: relative; border-color: transparent; background:
+  linear-gradient(var(--white), var(--white)) padding-box,
+  conic-gradient(from var(--angle, 0deg), #4263EB, #9FB2F7, #E8EAF0, #4263EB) border-box;
+  border: 2px solid transparent; animation: spin-border 6s linear infinite; }
+@property --angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes spin-border { to { --angle: 360deg; } }
+@keyframes pop { from { opacity: .001; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
+.stagger.in .needs-table tr:not(:first-child) { animation: pop .5s cubic-bezier(.2, .7, .2, 1) both; }
+.stagger.in .needs-table tr:nth-child(2) { animation-delay: .15s; } .stagger.in .needs-table tr:nth-child(3) { animation-delay: .25s; }
+.stagger.in .needs-table tr:nth-child(4) { animation-delay: .35s; } .stagger.in .needs-table tr:nth-child(5) { animation-delay: .45s; }
+.stagger.in .needs-table tr:nth-child(6) { animation-delay: .55s; } .stagger.in .needs-table tr:nth-child(7) { animation-delay: .65s; }
+.stagger.in .needs-table tr:nth-child(8) { animation-delay: .75s; }
+.stagger.in .grade { animation: pop .5s cubic-bezier(.2, .7, .2, 1) both; }
+.stagger.in .grade:nth-of-type(2) { animation-delay: .1s; } .stagger.in .grade:nth-of-type(3) { animation-delay: .2s; }
+.stagger.in .grade:nth-of-type(4) { animation-delay: .3s; } .stagger.in .grade:nth-of-type(5) { animation-delay: .4s; }
+.stagger.in .grade:nth-of-type(6) { animation-delay: .5s; }
+.proof b { transition: color .3s; }
+@media (prefers-reduced-motion: reduce) {
+  .blob, .plan.featured { animation: none; }
+  .hero-app { transform: none; }
+  .progress { display: none; }
+}
 </style>
 </head>
 <body>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header class="nav" id="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Flash Analyst home">
@@ -434,6 +473,7 @@ footer p a { color: var(--muted); }
 <main>
 
 <section class="hero">
+  <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span><span class="blob b3" aria-hidden="true"></span>
   <div class="wrap">
     <div class="hero-copy">
       <p class="eyebrow">Business spreadsheets &amp; company analysis</p>
@@ -446,7 +486,7 @@ footer p a { color: var(--muted); }
       </div>
       <div class="proof">
         <div><b>&lt; 1 sec</b>per report</div>
-        <div><b>12</b>key ratios</div>
+        <div><b data-count="12" data-dec="0">12</b>key ratios</div>
         <div><b>0–100</b>health score</div>
       </div>
     </div>
@@ -963,6 +1003,36 @@ footer p a { color: var(--muted); }
         el.classList.add("reveal");
         io.observe(el);
       });
+    }
+
+    // Scroll progress bar and hero tilt
+    const bar = document.getElementById("progress");
+    const heroApp = document.querySelector(".hero-app");
+    let ticking = false;
+    const onMove = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+      const t = Math.min(1, window.scrollY / 500);
+      heroApp.style.setProperty("--tilt", (10 * (1 - t) - 6 * Math.max(0, t - .6)).toFixed(2) + "deg");
+      ticking = false;
+    };
+    window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onMove); } }, { passive: true });
+    onMove();
+    const heroWrap = document.querySelector(".hero .wrap");
+    heroWrap.addEventListener("pointermove", e => {
+      if (e.pointerType !== "mouse") return;
+      const r = heroApp.getBoundingClientRect();
+      heroApp.style.setProperty("--tilt-y", (((e.clientX - r.left) / r.width - .5) * 6).toFixed(2) + "deg");
+    });
+    heroWrap.addEventListener("pointerleave", () => heroApp.style.setProperty("--tilt-y", "0deg"));
+
+    // Pop in the Pro table rows and the grade letters
+    if ("IntersectionObserver" in window) {
+      const pops = document.querySelectorAll("#pro .app, .grades");
+      const po = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("stagger", "in"); po.unobserve(e.target); }
+      }), { threshold: .25 });
+      pops.forEach(el => po.observe(el));
     }
 
     // Report preview flips through its tabs until the visitor takes over
