@@ -140,7 +140,8 @@ code { font-family: var(--mono); font-size: .86em; background: var(--soft); bord
 
 /* Trust strip */
 .trust { border-block: 1px solid var(--line); background: var(--soft); padding-block: 26px; }
-.trust .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; }
+.trust .wrap { display: flex; align-items: center; gap: 14px 32px; }
+.trust p { flex: none; }
 .trust p { font-size: .85rem; font-weight: 500; }
 .apps { display: flex; flex-wrap: wrap; gap: 10px 28px; list-style: none; margin: 0; padding: 0; }
 .apps li { font-size: .95rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; opacity: .78; }
@@ -338,6 +339,60 @@ footer p a { color: var(--muted); }
   .float-2 { right: 8px; top: -16px; }
   .hero::after { width: 380px; height: 380px; right: -140px; top: 120px; }
 }
+
+/* Motion */
+@keyframes rise { from { opacity: .001; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes grow { from { transform: scaleY(0); } }
+@keyframes fill { from { width: 0; } }
+@keyframes sheen { to { background-position: 200% 50%; } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 12px 28px -12px rgba(66, 99, 235, .7), 0 0 0 0 rgba(66, 99, 235, .35); } 50% { box-shadow: 0 12px 28px -12px rgba(66, 99, 235, .7), 0 0 0 12px rgba(66, 99, 235, 0); } }
+@keyframes tabline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hero-copy > * { animation: rise .8s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-copy > :nth-child(2) { animation-delay: .06s; }
+.hero-copy > :nth-child(3) { animation-delay: .14s; }
+.hero-copy > :nth-child(4) { animation-delay: .2s; }
+.hero-copy > :nth-child(5) { animation-delay: .28s; }
+.hero-copy > :nth-child(6) { animation-delay: .36s; }
+.mock-wrap { animation: rise 1s cubic-bezier(.2, .7, .2, 1) .25s both; }
+.float-2 { animation: rise .7s cubic-bezier(.2, .7, .2, 1) 1.1s both, bob 7s ease-in-out 1.8s infinite; }
+.float-1 { animation: rise .7s cubic-bezier(.2, .7, .2, 1) 1.3s both, bob 6s ease-in-out 2s infinite; }
+.hero-app .bars i { transform-origin: bottom; animation: grow .9s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-app .bars div:nth-child(1) i { animation-delay: .7s; } .hero-app .bars div:nth-child(2) i { animation-delay: .78s; }
+.hero-app .bars div:nth-child(3) i { animation-delay: .86s; } .hero-app .bars div:nth-child(4) i { animation-delay: .94s; }
+.hero-app .bars div:nth-child(5) i { animation-delay: 1.02s; }
+.comp i::after { animation: fill 1.1s cubic-bezier(.2, .7, .2, 1) .6s both; }
+.hero h1 em { background: linear-gradient(90deg, #4263EB 0%, #7C93FF 25%, #4263EB 50%, #7C93FF 75%, #4263EB 100%); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 5s linear infinite; }
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent); transition: left .6s ease; }
+.btn-primary:hover::after { left: 130%; }
+.nav-links a { position: relative; }
+.nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.nav-links a:hover::after { transform: scaleX(1); }
+.marquee { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee .track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.marquee:hover .track { animation-play-state: paused; }
+.marquee .apps { flex-wrap: nowrap; padding-right: 28px; }
+.marquee .apps li { white-space: nowrap; }
+.convert .bolt { animation: pulse 2.6s ease-in-out infinite; }
+.tablist button { position: relative; overflow: hidden; }
+.tablist.auto button[aria-selected="true"]::after { content: ""; position: absolute; left: 20px; right: 20px; bottom: 0; height: 2px; background: var(--blue); transform-origin: left; animation: tabline 5s linear both; }
+.reveal { opacity: .25; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
+.reveal.in { opacity: 1; transform: none; }
+.needs-table tr { transition: background .2s; }
+.needs-table tr:hover td { background: var(--blue-tint); }
+.needs-table tr:hover td.y { background: #FFF3CC; }
+.dl .x { transition: transform .25s; }
+.dl:hover .x { transform: rotate(-6deg) scale(1.06); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .hero h1 em { animation: none; }
+  .marquee .track { animation: none; }
+  .marquee .apps:last-child { display: none; }
+  .marquee .apps { flex-wrap: wrap; }
+}
 </style>
 </head>
 <body>
@@ -380,7 +435,7 @@ footer p a { color: var(--muted); }
 
 <section class="hero">
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <p class="eyebrow">Business spreadsheets &amp; company analysis</p>
       <h1>Company Analysis in a <em>Flash</em></h1>
       <p class="tag">The Future - Flash Analyst</p>
@@ -399,7 +454,7 @@ footer p a { color: var(--muted); }
     <div class="mock-wrap">
     <div class="float float-2" aria-hidden="true"><span class="ic" style="background:#E8F3EC"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D6F42" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span>Report ready<small>in under a second</small></span></div>
     <div class="float float-1" aria-hidden="true"><span class="ic" style="background:#558B2F;color:#fff;font-weight:700">B</span><span>Health score 76<small>Maple Ridge sample</small></span></div>
-    <div class="app" role="img" aria-label="The Dashboard tab of a sample Flash Analyst report for Maple Ridge Outfitters: revenue $2.1M, health score 76, grade B, a revenue and net income chart, and key insights.">
+    <div class="app hero-app" role="img" aria-label="The Dashboard tab of a sample Flash Analyst report for Maple Ridge Outfitters: revenue $2.1M, health score 76, grade B, a revenue and net income chart, and key insights.">
       <div class="app-bar">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="file"><span class="x">X</span><span>maple_ridge_outfitters_analysis.xlsx</span></span>
@@ -408,15 +463,15 @@ footer p a { color: var(--muted); }
       <div class="sheet">
         <div class="sheet-title"><b>Maple Ridge Outfitters — Company Analysis</b><small>Prepared by Flash Analyst</small></div>
         <div class="kpis">
-          <div class="kpi"><small>Revenue 2024</small><b>$2.1M</b></div>
-          <div class="kpi"><small>Revenue CAGR</small><b>4.3%</b></div>
-          <div class="kpi"><small>Net Margin</small><b>18.8%</b></div>
-          <div class="kpi"><small>ROE</small><b>53.5%</b></div>
-          <div class="kpi"><small>Current Ratio</small><b>2.39x</b></div>
-          <div class="kpi"><small>Debt / Equity</small><b>1.34x</b></div>
+          <div class="kpi"><small>Revenue 2024</small><b data-count="2.1" data-dec="1" data-pre="$" data-suf="M">$2.1M</b></div>
+          <div class="kpi"><small>Revenue CAGR</small><b data-count="4.3" data-dec="1" data-suf="%">4.3%</b></div>
+          <div class="kpi"><small>Net Margin</small><b data-count="18.8" data-dec="1" data-suf="%">18.8%</b></div>
+          <div class="kpi"><small>ROE</small><b data-count="53.5" data-dec="1" data-suf="%">53.5%</b></div>
+          <div class="kpi"><small>Current Ratio</small><b data-count="2.39" data-dec="2" data-suf="x">2.39x</b></div>
+          <div class="kpi"><small>Debt / Equity</small><b data-count="1.34" data-dec="2" data-suf="x">1.34x</b></div>
         </div>
         <div class="score-row">
-          <div class="score"><b>76</b><span>GRADE B</span></div>
+          <div class="score"><b data-count="76" data-dec="0">76</b><span>GRADE B</span></div>
           <div class="comp">
             <div>Profitability<i style="--w:94%"></i><em>94%</em></div>
             <div>Growth<i style="--w:29%"></i><em>29%</em></div>
@@ -451,9 +506,10 @@ footer p a { color: var(--muted); }
 <section class="trust" aria-label="Works with">
   <div class="wrap">
     <p>Reads exports from</p>
-    <ul class="apps">
-      <li>QuickBooks</li><li>Xero</li><li>Wave</li><li>FreshBooks</li><li>Sage</li><li>Zoho Books</li><li>Excel</li><li>Google Sheets</li>
-    </ul>
+    <div class="marquee"><div class="track">
+      <ul class="apps"><li>QuickBooks</li><li>Xero</li><li>Wave</li><li>FreshBooks</li><li>Sage</li><li>Zoho Books</li><li>Excel</li><li>Google Sheets</li></ul>
+      <ul class="apps" aria-hidden="true"><li>QuickBooks</li><li>Xero</li><li>Wave</li><li>FreshBooks</li><li>Sage</li><li>Zoho Books</li><li>Excel</li><li>Google Sheets</li></ul>
+    </div></div>
   </div>
 </section>
 
@@ -877,6 +933,55 @@ footer p a { color: var(--muted); }
       }
     });
   });
+
+  // ---- Motion ----
+  if (!reduced) {
+    // Count up the hero numbers
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    document.querySelectorAll(".hero [data-count]").forEach(el => {
+      const to = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0;
+      const pre = el.dataset.pre || "", suf = el.dataset.suf || "";
+      const start = performance.now() + 600, dur = 1300;
+      const tick = now => {
+        const t = Math.min(1, Math.max(0, (now - start) / dur));
+        el.textContent = pre + (to * ease(t)).toFixed(dec) + suf;
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+
+    // Sections slide up as they come into view
+    if ("IntersectionObserver" in window) {
+      const targets = document.querySelectorAll(".section .head, .timeline li, .report > *, .split > *, .score-layout > *, #pro .app, .plan, .dl, .faq details, .convert .box");
+      const io = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      }), { rootMargin: "0px 0px -8% 0px" });
+      targets.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight) return; // already on screen: leave as is
+        const siblings = [...el.parentElement.children].filter(c => c.matches(el.tagName.toLowerCase() + (el.className ? "." + el.className.split(" ")[0] : "")));
+        el.style.setProperty("--d", Math.min(siblings.indexOf(el), 5) * 0.08 + "s");
+        el.classList.add("reveal");
+        io.observe(el);
+      });
+    }
+
+    // Report preview flips through its tabs until the visitor takes over
+    const list = document.querySelector(".tablist");
+    let auto = null, idx = 0;
+    const stopAuto = () => { clearInterval(auto); auto = null; list.classList.remove("auto"); };
+    const startAuto = () => {
+      if (auto) return;
+      list.classList.add("auto");
+      auto = setInterval(() => { idx = (tabs.findIndex(t => t.getAttribute("aria-selected") === "true") + 1) % tabs.length; select(tabs[idx]); }, 5000);
+    };
+    tabs.forEach(t => ["pointerdown", "keydown", "focus"].forEach(ev => t.addEventListener(ev, stopAuto)));
+    if ("IntersectionObserver" in window) {
+      let touched = false;
+      tabs.forEach(t => t.addEventListener("pointerdown", () => { touched = true; }));
+      new IntersectionObserver(([e]) => { if (e.isIntersecting && !touched) startAuto(); else if (!e.isIntersecting) stopAuto(); }, { threshold: .15 })
+        .observe(document.getElementById("report"));
+    }
+  }
 })();
 </script>
 </body>
