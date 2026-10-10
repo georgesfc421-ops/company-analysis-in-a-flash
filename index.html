@@ -231,6 +231,9 @@ table.plain td:first-child { font-weight: 600; color: var(--ink); }
 .plan li.no { color: var(--muted); }
 .plan li.no::before { background: var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2369707D' stroke-width='3'%3E%3Cpath d='M7 12h10'/%3E%3C/svg%3E") center / 11px no-repeat; }
 .plan .btn { width: 100%; }
+.btn-soon { cursor: default; opacity: .75; }
+.btn-soon:hover { transform: none; }
+.btn-soon::after { display: none; }
 .plans-note { margin-top: 28px; max-width: 760px; }
 .plans-note a { color: var(--blue); }
 
@@ -820,7 +823,7 @@ footer p a { color: var(--muted); }
         <div class="plan-top"><h3>Basic</h3></div>
         <p class="who">For business owners checking their own company.</p>
         <div class="price"><span class="amount">$49</span><s>$79</s><span>one time · launch price</span></div>
-        <a class="btn btn-secondary" href="mailto:georgesfc421@gmail.com?subject=Flash%20Analyst%20Basic">Get Basic</a>
+        <span class="btn btn-secondary btn-soon">Checkout opens soon</span>
         <ul>
           <li>Dashboard with health score, grade and insights</li>
           <li>Financials, 12 live ratios and a 3-year forecast</li>
@@ -834,7 +837,7 @@ footer p a { color: var(--muted); }
         <div class="plan-top"><h3>Pro</h3><span class="badge-pro">BEST FOR CLIENT WORK</span></div>
         <p class="who">For accountants, bookkeepers and consultants with clients.</p>
         <div class="price"><span class="amount">$149</span><span>one time</span></div>
-        <a class="btn btn-primary" href="mailto:georgesfc421@gmail.com?subject=Flash%20Analyst%20Pro">Get Pro</a>
+        <span class="btn btn-primary btn-soon">Checkout opens soon</span>
         <ul>
           <li>Everything in Basic</li>
           <li><b>Client Needs action plan in every report</b></li>
@@ -875,12 +878,11 @@ footer p a { color: var(--muted); }
       </div>
       <div class="note-card">
         <p class="quote">You might agree or disagree, but slowly enough, automation will become the future. Why not use it to its full potential? Let’s not waste time: this invention, Flash Analyst, will redefine how businesses understand their numbers.</p>
-        <p class="aside">Flash Analyst is an independent product, built and supported by its founder. When you email, you talk to the person who built it, and your feedback shapes what comes next.</p>
+        <p class="aside">Flash Analyst is an independent product, built and supported by its founder. When you get in touch, you talk to the person who built it, and your feedback shapes what comes next.</p>
         <div class="sig">
-          <span class="avatar initials" aria-hidden="true">SC</span>
-          <span><b>Shanfeng George Chen</b><small>Founder, Flash Analyst</small></span>
+          <span class="avatar initials" aria-hidden="true">GC</span>
+          <span><b>George C.</b><small>Founder, Flash Analyst</small></span>
         </div>
-        <a class="btn btn-secondary" href="mailto:georgesfc421@gmail.com?subject=Hello%20from%20the%20Flash%20Analyst%20website">Talk to the founder</a>
       </div>
     </div>
     <div class="principles">
@@ -939,10 +941,9 @@ footer p a { color: var(--muted); }
     <div class="box">
       <span class="bolt" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg></span>
       <h2>Get Flash Analyst</h2>
-      <p>Basic is $49 at launch (regular price $79) and Pro is $149, paid once. Online checkout opens soon. Email us to buy now or ask a question.</p>
+      <p>Basic is $49 at launch (regular price $79) and Pro is $149, paid once. Online checkout opens soon. Until then, try the free sample reports.</p>
       <div class="ctas">
-        <a class="btn btn-primary btn-lg" href="mailto:georgesfc421@gmail.com?subject=Flash%20Analyst">Email georgesfc421@gmail.com</a>
-        <a class="textlink" href="#samples">See sample reports</a>
+        <a class="btn btn-primary btn-lg" href="#samples">See sample reports</a>
       </div>
     </div>
   </div>
@@ -966,7 +967,7 @@ footer p a { color: var(--muted); }
         <a href="privacy.html">Privacy Policy</a>
       </nav>
     </div>
-    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by Shanfeng George Chen · Support: <a href="mailto:georgesfc421@gmail.com">georgesfc421@gmail.com</a></p>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C.</p>
     <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
   </div>
 </footer>
