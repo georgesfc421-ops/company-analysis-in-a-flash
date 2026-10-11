@@ -629,3 +629,16 @@ footer p a { color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) { .dial-fill, .calc-cta { transition: none; animation: none; } }
 .grades-pro { margin: 4px 0 0; font-size: .88rem; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+/* Ten top links: tighter spacing, and the current page underlined */
+.nav-links { gap: 15px; }
+.nav-links a { font-size: .88rem; white-space: nowrap; }
+.nav-links a[aria-current="page"] { color: var(--ink); }
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+.mobile-menu a[aria-current="page"] { color: var(--blue); }
+@media (max-width: 1320px) {
+  .nav-links, .nav-cta .btn { display: none; }
+  .menu-btn { display: inline-flex; }
+}
+.nav .brand { white-space: nowrap; }
+.mobile-menu .btn { display: flex; justify-content: center; color: #fff; }
