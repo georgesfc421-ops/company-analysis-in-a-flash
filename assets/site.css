@@ -523,7 +523,7 @@ footer p a { color: var(--muted); }
 .build .shown { opacity: 1 !important; transform: none !important; }
 
 /* Who it's for */
-.who { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.who-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .who-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; display: grid; gap: 12px; align-content: start; transition: transform .3s cubic-bezier(.2, .7, .2, 1), box-shadow .3s; }
 .who-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .who-card .ico { width: 46px; height: 46px; border-radius: 12px; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; }
@@ -537,7 +537,7 @@ footer p a { color: var(--muted); }
 .compare .no { color: var(--muted); }
 .compare-note { margin-top: 18px; max-width: 720px; }
 
-@media (max-width: 1020px) { .demo-grid { grid-template-columns: minmax(0, 1fr); } .who { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1020px) { .demo-grid { grid-template-columns: minmax(0, 1fr); } .who-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 720px) { .term-body { font-size: .74rem; padding: 16px; min-height: 0; } }
 
 /* Sub-pages */
@@ -628,3 +628,4 @@ footer p a { color: var(--muted); }
   .calc-group { padding: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .dial-fill, .calc-cta { transition: none; animation: none; } }
+.grades-pro { margin: 4px 0 0; font-size: .88rem; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
