@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Health Score Calculator · Flash Analyst</title>
+<meta name="description" content="Free calculator: get your company's Financial Health Score out of 100 from a few numbers.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Flash Analyst">
+<meta property="og:title" content="Free Health Score Calculator · Flash Analyst">
+<meta property="og:description" content="A finished, professional Excel report from your company's numbers in under a second: health score, key ratios, charts, plain-English insights and a 3-year forecast.">
+<meta property="og:url" content="https://georgesfc421-ops.github.io/company-analysis-in-a-flash/calculator.html">
+<meta property="og:image" content="https://georgesfc421-ops.github.io/company-analysis-in-a-flash/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111318%27/%3E%3Cpath d=%27M18 5 9 18h6l-2 9 10-14h-6z%27 fill=%27%234263EB%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>try { var t = localStorage.getItem("fa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Flash Analyst home">
+      <svg class="logo" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#111318"/><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg>
+      Flash Analyst
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="./#how">How it works</a></li>
+        <li><a href="./#report">The report</a></li>
+        <li><a href="./#pro">Pro</a></li>
+        <li><a href="./#plans">Plans</a></li>
+        <li><a href="./#samples">Samples</a></li>
+        <li><a href="./#about">About</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch between light and dark mode"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a class="btn btn-primary" href="./#plans">Get Flash Analyst</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
+    <ul>
+      <li><a href="./#how">How it works</a></li>
+      <li><a href="./#report">The report</a></li>
+      <li><a href="./#pro">Pro</a></li>
+      <li><a href="./#plans">Plans</a></li>
+      <li><a href="./#samples">Samples</a></li>
+      <li><a href="./#about">About</a></li>
+      <li><a href="./#faq">FAQ</a></li>
+      <li><a class="btn btn-primary" href="./#plans">Get Flash Analyst</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section class="section page-hero">
+  <div class="wrap narrow">
+    <p class="eyebrow">Free health score calculator</p>
+    <h1 class="page-title">How healthy is your company?</h1>
+    <p class="lead-text">Type in a few numbers from your company's last year and get its Financial Health Score, out of 100, straight away. It uses the same scoring as the full Flash Analyst report.</p>
+  </div>
+</section>
+
+<section class="section soft calc-section">
+  <div class="wrap">
+    <div class="calc">
+      <form class="calc-form" id="calc-form" autocomplete="off" novalidate>
+        <div class="calc-group">
+          <h2>The basics</h2>
+          <label class="field"><span>Sales this year <em>required</em></span><input inputmode="decimal" name="revenue" placeholder="e.g. 850,000"><small>All the money the business made from customers, before costs.</small></label>
+          <label class="field"><span>Profit this year <em>required</em></span><input inputmode="decimal" name="net_income" placeholder="e.g. 60,000"><small>What was left after every cost and tax. Use a minus sign for a loss, like -20,000.</small></label>
+          <label class="field"><span>Sales last year</span><input inputmode="decimal" name="revenue_prev" placeholder="e.g. 780,000"><small>Used to score growth.</small></label>
+        </div>
+        <details class="calc-group calc-more" id="calc-more">
+          <summary><span><b>Add more numbers</b> for a more accurate score (optional)</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="calc-more-body">
+            <label class="field"><span>Short-term assets</span><input inputmode="decimal" name="current_assets" placeholder="e.g. 210,000"><small>Cash, money customers owe you and stock. On the balance sheet as "Total current assets".</small></label>
+            <label class="field"><span>Bills due within a year</span><input inputmode="decimal" name="current_liabilities" placeholder="e.g. 120,000"><small>"Total current liabilities" on the balance sheet.</small></label>
+            <label class="field"><span>Everything the business owes</span><input inputmode="decimal" name="total_liabilities" placeholder="e.g. 300,000"><small>"Total liabilities", including loans.</small></label>
+            <label class="field"><span>Owners' equity</span><input inputmode="decimal" name="equity" placeholder="e.g. 400,000"><small>"Total equity": what the business is worth to its owners on paper.</small></label>
+            <label class="field"><span>Cash from running the business</span><input inputmode="decimal" name="ocf" placeholder="e.g. 90,000"><small>"Net cash from operating activities" on the cash flow statement.</small></label>
+            <label class="field"><span>Spent on equipment</span><input inputmode="decimal" name="capex" placeholder="e.g. 25,000"><small>Money spent on equipment, vehicles or property this year.</small></label>
+          </div>
+        </details>
+        <p class="calc-privacy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Your numbers stay on your device. Nothing is sent or saved.</p>
+      </form>
+
+      <aside class="calc-result" aria-live="polite">
+        <p class="calc-label">Financial Health Score</p>
+        <div class="calc-dial">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="dial-track" cx="60" cy="60" r="52"/><circle class="dial-fill" id="dial-fill" cx="60" cy="60" r="52"/></svg>
+          <div class="calc-num"><b id="calc-score">–</b><span>/100</span></div>
+        </div>
+        <p class="calc-grade" id="calc-grade-line">Enter your sales and profit to see your score.</p>
+        <p class="calc-areas" id="calc-areas"></p>
+        <div class="calc-cta" id="calc-cta" hidden>
+          <p>Want to know why you got <span id="calc-cta-grade">a B</span>, and what to fix? Get the full report.</p>
+          <a class="btn btn-primary" href="./#plans">Get the full report</a>
+        </div>
+      </aside>
+    </div>
+    <p class="calc-note">This score is a quick guide, not financial advice. Grades: A is 80 and above, B is 65 to 79, C is 50 to 64, D is 35 to 49, F is below 35. <a href="./#score">How the score works</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="./">
+        <svg class="logo" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#111318"/><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg>
+        Flash Analyst
+      </a>
+      <nav aria-label="Footer">
+        <a href="./#how">How it works</a>
+        <a href="./#plans">Plans</a>
+        <a href="./#samples">Samples</a>
+        <a href="./#about">About</a>
+        <a href="calculator.html">Free score calculator</a>
+        <a href="install.html">Install guide</a>
+        <a href="changelog.html">What's new</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C.</p>
+    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Same rules as the Flash Analyst report (flash_analyst/analysis.py)
+  const WEIGHTS = { profitability: 25, growth: 25, liquidity: 20, leverage: 15, cash: 15 };
+  const GRADE_COLORS = { A: "#2E7D32", B: "#558B2F", C: "#A86F00", D: "#C2410C", F: "#C62828" };
+  const clamp = x => Math.max(0, Math.min(1, x));
+  const div = (a, b) => (a == null || b == null || b === 0) ? null : a / b;
+
+  // Accepts 850000, $850,000, 850k, 1.5M, (500) and -500
+  const parse = text => {
+    let s = String(text).trim().replace(/[$,\s]/g, "");
+    if (!s) return null;
+    let neg = false;
+    if (/^\(.*\)$/.test(s)) { neg = true; s = s.slice(1, -1); }
+    const m = s.match(/^(-?\d*\.?\d+)([kmb])?$/i);
+    if (!m) return NaN;
+    const n = parseFloat(m[1]) * ({ k: 1e3, m: 1e6, b: 1e9 }[(m[2] || "").toLowerCase()] || 1);
+    return neg ? -n : n;
+  };
+
+  const form = document.getElementById("calc-form");
+  const scoreEl = document.getElementById("calc-score");
+  const gradeLine = document.getElementById("calc-grade-line");
+  const areasEl = document.getElementById("calc-areas");
+  const cta = document.getElementById("calc-cta");
+  const ctaGrade = document.getElementById("calc-cta-grade");
+  const fill = document.getElementById("dial-fill");
+  const LEN = 2 * Math.PI * 52;
+  fill.style.strokeDasharray = LEN;
+  fill.style.strokeDashoffset = LEN;
+  let shown = 0, raf = null;
+
+  const animateTo = target => {
+    cancelAnimationFrame(raf);
+    const from = shown, start = performance.now();
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const step = now => {
+      const t = reduce ? 1 : Math.min(1, (now - start) / 500);
+      shown = from + (target - from) * (1 - Math.pow(1 - t, 3));
+      scoreEl.textContent = Math.round(shown);
+      if (t < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  };
+
+  const update = () => {
+    const v = {};
+    let bad = false;
+    for (const input of form.querySelectorAll("input")) {
+      const n = parse(input.value);
+      input.classList.toggle("invalid", Number.isNaN(n));
+      if (Number.isNaN(n)) bad = true;
+      v[input.name] = Number.isNaN(n) ? null : n;
+    }
+    const reset = msg => {
+      cancelAnimationFrame(raf); shown = 0;
+      scoreEl.textContent = "–"; gradeLine.textContent = msg; areasEl.textContent = "";
+      fill.style.strokeDashoffset = LEN; cta.hidden = true;
+    };
+    if (v.revenue == null || v.net_income == null) return reset(bad ? "Check the highlighted box: use numbers only, like 850,000 or 1.5M." : "Enter your sales and profit to see your score.");
+    if (v.revenue <= 0) return reset("Sales need to be more than zero.");
+
+    const c = {};
+    c.profitability = clamp(v.net_income / v.revenue / 0.20);
+    const growth = (v.revenue_prev != null && v.revenue_prev > 0) ? v.revenue / v.revenue_prev - 1 : null;
+    c.growth = growth == null ? null : clamp(growth / 0.15);
+    const cr = div(v.current_assets, v.current_liabilities);
+    c.liquidity = cr == null ? null : clamp(cr / 2.0);
+    const de = div(v.total_liabilities, v.equity);
+    c.leverage = de == null ? null : (de < 0 ? 0 : clamp(1 - (de - 0.5) / 2.5));
+    const fcf = (v.ocf != null && v.capex != null) ? v.ocf - Math.abs(v.capex) : null;
+    c.cash = fcf == null ? null : clamp(fcf / v.revenue / 0.15);
+
+    let total = 0, weight = 0, used = 0;
+    for (const k in WEIGHTS) if (c[k] != null) { total += c[k] * WEIGHTS[k]; weight += WEIGHTS[k]; used++; }
+    const score = Math.round(1000 * total / weight) / 10;
+    const grade = score >= 80 ? "A" : score >= 65 ? "B" : score >= 50 ? "C" : score >= 35 ? "D" : "F";
+
+    animateTo(score);
+    fill.style.strokeDashoffset = LEN * (1 - score / 100);
+    fill.style.stroke = GRADE_COLORS[grade];
+    gradeLine.innerHTML = `Grade <b class="grade-chip" style="background:${GRADE_COLORS[grade]}">${grade}</b>`;
+    areasEl.textContent = used === 5 ? "Based on all 5 areas." : `Based on ${used} of 5 areas. Add more numbers for a more accurate score.`;
+    ctaGrade.textContent = (grade === "A" || grade === "F" ? "an " : "a ") + grade;
+    cta.hidden = false;
+  };
+
+  form.addEventListener("input", update);
+  form.addEventListener("submit", e => e.preventDefault());
+})();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
