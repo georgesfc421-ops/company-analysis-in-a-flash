@@ -642,3 +642,6 @@ footer p a { color: var(--muted); }
 }
 .nav .brand { white-space: nowrap; }
 .mobile-menu .btn { display: flex; justify-content: center; color: #fff; }
+/* No underlines in the top menu */
+.nav-links a::after, .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { content: none; }
+.nav-links a[aria-current="page"] { font-weight: 600; }
