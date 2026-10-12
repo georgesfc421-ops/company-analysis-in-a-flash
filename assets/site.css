@@ -694,3 +694,13 @@ footer p a { color: var(--muted); }
   .bakery dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .learn-cta-btns, .learn-cta-btns .btn { width: 100%; }
 }
+
+/* Terms and privacy */
+.legal { padding-bottom: 96px; }
+.legal-body h2 { font-size: 1.2rem; margin: 34px 0 8px; letter-spacing: -0.01em; }
+.legal-body p, .legal-body li { color: var(--ink); line-height: 1.7; max-width: 68ch; }
+.legal-body ul { padding-left: 1.2em; }
+.legal-body a { color: var(--blue); }
+.legal-body .updated { color: var(--muted); font-size: .95rem; margin: 8px 0 22px; }
+.legal-body .box { background: var(--soft); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px 18px; }
+.legal-body .eyebrow { color: var(--blue); }
