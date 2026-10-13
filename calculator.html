@@ -113,6 +113,16 @@
           <p>Want to know why you got <span id="calc-cta-grade">a B</span>, and what to fix? Get the full report.</p>
           <a class="btn btn-primary" href="./#plans">Get the full report</a>
         </div>
+        <div class="calc-share" id="calc-share" hidden>
+          <p class="calc-share-title">Share your score</p>
+          <label class="sr-only" for="share-name">Company name on the card (optional)</label>
+          <input id="share-name" maxlength="40" placeholder="Company name on the card (optional)" autocomplete="off">
+          <div class="share-btns">
+            <button class="btn btn-secondary" type="button" id="share-save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Save Image</button>
+            <button class="btn btn-secondary" type="button" id="share-send" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M16 6l-4-4-4 4M12 2v13"/></svg>Share</button>
+          </div>
+          <p class="share-note">The card shows only the score and grade, never your numbers.</p>
+        </div>
       </aside>
     </div>
     <p class="calc-note">This score is a quick guide, not financial advice. Grades: A is 80 and above, B is 65 to 79, C is 50 to 64, D is 35 to 49, F is below 35. <a href="./#score">How the score works</a></p>
@@ -175,7 +185,8 @@
   const LEN = 2 * Math.PI * 52;
   fill.style.strokeDasharray = LEN;
   fill.style.strokeDashoffset = LEN;
-  let shown = 0, raf = null;
+  let shown = 0, raf = null, last = null;
+  const shareBox = document.getElementById("calc-share");
 
   const animateTo = target => {
     cancelAnimationFrame(raf);
@@ -202,7 +213,7 @@
     const reset = msg => {
       cancelAnimationFrame(raf); shown = 0;
       scoreEl.textContent = "–"; gradeLine.textContent = msg; areasEl.textContent = "";
-      fill.style.strokeDashoffset = LEN; cta.hidden = true;
+      fill.style.strokeDashoffset = LEN; cta.hidden = true; shareBox.hidden = true; last = null;
     };
     if (v.revenue == null || v.net_income == null) return reset(bad ? "Check the highlighted box: use numbers only, like 850,000 or 1.5M." : "Enter your sales and profit to see your score.");
     if (v.revenue <= 0) return reset("Sales need to be more than zero.");
@@ -230,7 +241,80 @@
     areasEl.textContent = used === 5 ? "Based on all 5 areas." : `Based on ${used} of 5 areas. Add more numbers for a more accurate score.`;
     ctaGrade.textContent = (grade === "A" || grade === "F" ? "an " : "a ") + grade;
     cta.hidden = false;
+    shareBox.hidden = false;
+    last = { score: Math.round(score), grade };
   };
+
+
+  // ---- Score card image ----
+  const URL_TEXT = "georgesfc421-ops.github.io/company-analysis-in-a-flash";
+  const roundRect = (ctx, x, y, w, h, r) => { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); };
+  const fit = (ctx, text, max) => { if (ctx.measureText(text).width <= max) return text; while (text.length > 1 && ctx.measureText(text + "…").width > max) text = text.slice(0, -1); return text.trim() + "…"; };
+  const drawCard = async () => {
+    try { await document.fonts.ready; } catch (e) {}
+    const W = 1200, H = 630, c = document.createElement("canvas");
+    c.width = W; c.height = H;
+    const ctx = c.getContext("2d"), F = '"Inter", system-ui, -apple-system, "Segoe UI", sans-serif';
+    const color = GRADE_COLORS[last.grade];
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, "#0F131A"); bg.addColorStop(1, "#1A2342");
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = "rgba(255,255,255,.04)"; ctx.lineWidth = 1;
+    for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(W, y + .5); ctx.stroke(); }
+    const glow = ctx.createRadialGradient(900, 300, 0, 900, 300, 380);
+    glow.addColorStop(0, "rgba(66,99,235,.35)"); glow.addColorStop(1, "rgba(66,99,235,0)");
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+    // Brand
+    ctx.fillStyle = "#222B3A"; roundRect(ctx, 72, 64, 52, 52, 14); ctx.fill();
+    ctx.fillStyle = "#4263EB"; ctx.beginPath();
+    [[29.4, 8.4], [14.5, 29.7], [24.6, 29.7], [21.2, 43.7], [37.6, 21.0], [27.6, 21.0]].forEach(([x, y], i) => ctx[i ? "lineTo" : "moveTo"](72 + x, 64 + y));
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = "#FFFFFF"; ctx.font = `700 30px ${F}`; ctx.textBaseline = "middle"; ctx.fillText("Flash Analyst", 142, 91);
+    // Text
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "#7D96FF"; ctx.font = `700 22px ${F}`; ctx.fillText("FINANCIAL HEALTH SCORE", 72, 228);
+    const name = document.getElementById("share-name").value.trim();
+    let size = 58;
+    ctx.font = `800 ${size}px ${F}`;
+    while (size > 38 && ctx.measureText(name || "My company").width > 620) ctx.font = `800 ${--size}px ${F}`;
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText(fit(ctx, name || "My company", 620), 72, 304);
+    ctx.fillStyle = "#AEB6C4"; ctx.font = `500 34px ${F}`; ctx.fillText("scored", 72, 356);
+    ctx.fillStyle = "#FFFFFF"; ctx.font = `800 120px ${F}`; ctx.fillText(String(last.score), 72, 486);
+    const sw = ctx.measureText(String(last.score)).width;
+    ctx.fillStyle = "#AEB6C4"; ctx.font = `600 44px ${F}`; ctx.fillText("/100", 84 + sw, 486);
+    // Ring
+    const cx = 900, cy = 300, r = 150;
+    ctx.lineWidth = 26; ctx.lineCap = "round";
+    ctx.strokeStyle = "rgba(255,255,255,.1)"; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = color; ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * Math.max(.01, last.score / 100)); ctx.stroke();
+    ctx.textAlign = "center"; ctx.fillStyle = "#FFFFFF"; ctx.font = `800 150px ${F}`; ctx.textBaseline = "middle"; ctx.fillText(last.grade, cx, cy + 6);
+    ctx.fillStyle = "#AEB6C4"; ctx.font = `600 26px ${F}`; ctx.fillText("GRADE", cx, cy + 92);
+    // Footer
+    ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "rgba(255,255,255,.12)"; ctx.fillRect(72, 540, W - 144, 1);
+    ctx.fillStyle = "#AEB6C4"; ctx.font = `500 22px ${F}`; ctx.fillText("Get your free score:", 72, 584);
+    const lw = ctx.measureText("Get your free score:").width;
+    ctx.fillStyle = "#FFFFFF"; ctx.font = `600 22px ${F}`; ctx.fillText(URL_TEXT, 72 + lw + 10, 584);
+    return new Promise(res => c.toBlob(res, "image/png"));
+  };
+  const fileName = () => "flash-analyst-score-" + last.score + ".png";
+  document.getElementById("share-save").addEventListener("click", async () => {
+    if (!last) return;
+    const blob = await drawCard(), url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+  });
+  const sendBtn = document.getElementById("share-send");
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [new File([""], "x.png", { type: "image/png" })] })) sendBtn.hidden = false;
+  } catch (e) {}
+  sendBtn.addEventListener("click", async () => {
+    if (!last) return;
+    const file = new File([await drawCard()], fileName(), { type: "image/png" });
+    try { await navigator.share({ files: [file], title: "My Financial Health Score", text: `My company scored ${last.score}/100 (grade ${last.grade}) on the free Flash Analyst health score.` }); } catch (e) {}
+  });
 
   form.addEventListener("input", update);
   form.addEventListener("submit", e => e.preventDefault());

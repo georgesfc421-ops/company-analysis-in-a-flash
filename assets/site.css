@@ -704,3 +704,48 @@ footer p a { color: var(--muted); }
 .legal-body .updated { color: var(--muted); font-size: .95rem; margin: 8px 0 22px; }
 .legal-body .box { background: var(--soft); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px 18px; }
 .legal-body .eyebrow { color: var(--blue); }
+
+/* Before / after slider */
+.ba-wrap { margin-top: 64px; display: grid; gap: 14px; justify-items: center; }
+.ba-hint { margin: 0; font-size: .85rem; font-weight: 600; color: var(--blue); }
+.ba { position: relative; display: grid; touch-action: pan-y; width: 100%; max-width: 860px; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--line); user-select: none; -webkit-user-select: none; }
+.ba-pane { grid-area: 1 / 1; min-width: 0; }
+.ba-after { border: 0; border-radius: 0; box-shadow: none; }
+.ba-before { background: #FFFFFF; color: #222; clip-path: inset(0 calc(100% - var(--pos)) 0 0); z-index: 1; font-family: var(--mono); }
+.ba-before-bar { display: flex; align-items: center; gap: 8px; padding: 11px 14px; font: 600 .78rem var(--font); color: #555; background: #EEF0F3; border-bottom: 1px solid #D5D9E0; }
+.ba-before-bar .x { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; background: #1D6F42; color: #fff; font-size: .6rem; }
+.raw { width: 100%; border-collapse: collapse; font-size: .68rem; table-layout: fixed; }
+.raw th, .raw td { border: 1px solid #E1E4EA; padding: 4px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; font-weight: 400; }
+.raw th { background: #F3F4F6; color: #8A8F98; text-align: center; font-size: .6rem; }
+.raw tr.cols th { height: 20px; }
+.raw col.c-n { width: 34px; }
+.raw col.c-a { width: 36%; }
+.raw .num { text-align: right; }
+.raw td.title { font-weight: 700; }
+.raw td.sub { color: #666; }
+.raw tr.hrow td, .raw tr.grp td { font-weight: 700; }
+.raw tr.tot td { border-top: 1px solid #9AA0AA; }
+.ba-tag { position: absolute; bottom: 12px; z-index: 3; font: 700 .7rem var(--font); letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; pointer-events: none; }
+.ba-tag-before { left: 12px; background: #111318; color: #fff; }
+.ba-tag-after { right: 12px; background: var(--blue); color: #fff; }
+.ba-line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(17, 19, 24, .15); z-index: 2; pointer-events: none; }
+.ba-knob { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: #fff; color: var(--blue); display: grid; place-items: center; box-shadow: 0 4px 16px rgba(17, 19, 24, .25); }
+.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; z-index: 4; -webkit-appearance: none; appearance: none; touch-action: pan-y; }
+.ba-range:focus-visible + .ba-line, .ba:focus-within .ba-knob { outline: 3px solid var(--blue); outline-offset: 2px; }
+.ba-caption { margin: 0; font-size: .85rem; color: var(--muted); text-align: center; max-width: 640px; }
+.tpl-cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+.tpl-cta span { color: var(--muted); font-size: .9rem; }
+@media (max-width: 640px) {
+  .raw { font-size: .56rem; }
+  .raw th, .raw td { padding: 3px 4px; }
+  .raw col.c-n { width: 22px; }
+  .tpl-cta .btn { width: 100%; }
+}
+.calc-share { width: 100%; border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 10px; text-align: left; }
+.calc-share[hidden] { display: none; }
+.calc-share-title { margin: 0; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.calc-share input { font: 500 .92rem var(--font); color: var(--ink); background: var(--soft); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 12px; width: 100%; }
+.calc-share input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+.share-btns { display: flex; gap: 10px; }
+.share-btns .btn { flex: 1; padding: 10px 14px; font-size: .9rem; }
+.share-note { margin: 0; font-size: .78rem; color: var(--muted); }
