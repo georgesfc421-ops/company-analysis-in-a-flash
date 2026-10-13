@@ -749,3 +749,7 @@ footer p a { color: var(--muted); }
 .share-btns { display: flex; gap: 10px; }
 .share-btns .btn { flex: 1; padding: 10px 14px; font-size: .9rem; }
 .share-note { margin: 0; font-size: .78rem; color: var(--muted); }
+.sigs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.sigs .sig { padding-top: 0; border-top: 0; }
+.sig .avatar.initials.owner { background: linear-gradient(135deg, #1D6F42, #2F9E6B); }
+@media (max-width: 420px) { .sigs { grid-template-columns: minmax(0, 1fr); } }
