@@ -1,0 +1,6 @@
+Third-party software used by the Flash Analyst browser version (app.html):
+
+- Pyodide 0.26.4 (https://pyodide.org), Mozilla Public License 2.0.
+  The files in this folder are unmodified copies from the pyodide npm package.
+- openpyxl 3.1.5 (https://openpyxl.readthedocs.io), MIT License.
+- et_xmlfile 2.0.0 (https://foss.heptapod.net/openpyxl/et_xmlfile), MIT License.

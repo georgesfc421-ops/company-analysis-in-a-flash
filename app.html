@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flash Analyst App</title>
+<meta name="description" content="Make a Flash Analyst report in your browser: nothing to install, and your files never leave your device.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Flash Analyst">
+<meta property="og:title" content="Flash Analyst App">
+<meta property="og:description" content="A finished, professional Excel report from your company's numbers in under a second: health score, key ratios, charts, plain-English insights and a 3-year forecast.">
+<meta property="og:url" content="https://georgesfc421-ops.github.io/company-analysis-in-a-flash/app.html">
+<meta property="og:image" content="https://georgesfc421-ops.github.io/company-analysis-in-a-flash/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111318%27/%3E%3Cpath d=%27M18 5 9 18h6l-2 9 10-14h-6z%27 fill=%27%234263EB%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>try { var t = localStorage.getItem("fa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Flash Analyst home">
+      <svg class="logo" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#111318"/><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg>
+      Flash Analyst
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="./#how">How It Works</a></li>
+        <li><a href="./#report">The Report</a></li>
+        <li><a href="./#pro">Pro</a></li>
+        <li><a href="./#plans">Plans</a></li>
+        <li><a href="./#samples">Samples</a></li>
+        <li><a href="./#about">About</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+        <li><a href="app.html" aria-current="page">App</a></li>
+        <li><a href="calculator.html">Free Score</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="install.html">Install</a></li>
+        <li><a href="changelog.html">What's New</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch between light and dark mode"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a class="btn btn-primary" href="./#plans">Get Flash Analyst</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
+    <ul>
+      <li><a href="./#how">How It Works</a></li>
+      <li><a href="./#report">The Report</a></li>
+      <li><a href="./#pro">Pro</a></li>
+      <li><a href="./#plans">Plans</a></li>
+      <li><a href="./#samples">Samples</a></li>
+      <li><a href="./#about">About</a></li>
+      <li><a href="./#faq">FAQ</a></li>
+      <li><a href="app.html" aria-current="page">App</a></li>
+      <li><a href="calculator.html">Free Score</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="install.html">Install</a></li>
+      <li><a href="changelog.html">What's New</a></li>
+      <li><a class="btn btn-primary" href="./#plans">Get Flash Analyst</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section class="section page-hero">
+  <div class="wrap narrow">
+    <p class="eyebrow">Flash Analyst app</p>
+    <h1 class="page-title">Make Your Report Right Here</h1>
+    <p class="lead-text">Nothing to install and no commands to type. Add your company's numbers, press one button and download the finished Excel report. Works on computers and tablets.</p>
+    <p class="app-private"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Your files are read on your own device and never uploaded.</p>
+    <p class="engine" id="engine" data-state="idle"><span class="dot" aria-hidden="true"></span><span id="engine-text">Getting ready…</span></p>
+  </div>
+</section>
+
+<section class="section soft app-section">
+  <div class="wrap narrow app-steps">
+
+    <div class="app-card" id="lic">
+      <div class="app-card-h"><span class="step-n">1</span><h2>Your License</h2></div>
+      <div id="lic-soon" hidden>
+        <p>Online checkout opens soon. Until then, try the demo below: it makes real reports from three sample companies, so you can see exactly what you'll get.</p>
+        <a class="link-arrow" href="./#plans">See plans and prices</a>
+      </div>
+      <form id="lic-form" hidden>
+        <label class="field"><span>License key</span><input id="lic-key" autocomplete="off" spellcheck="false" placeholder="e.g. 38b1460a-5104-4067-a91d-77b872934d51"><small>It's in your receipt email.</small></label>
+        <button class="btn btn-primary" type="submit" id="lic-go">Activate</button>
+      </form>
+      <div id="lic-ok" hidden>
+        <p class="lic-ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span id="lic-who"></span></p>
+        <button class="btn btn-secondary btn-sm" type="button" id="lic-remove">Remove from this device</button>
+      </div>
+      <p class="app-msg" id="lic-msg" role="status"></p>
+    </div>
+
+    <div class="app-card" id="files-card">
+      <div class="app-card-h"><span class="step-n">2</span><h2>Add Your Numbers</h2></div>
+      <label class="drop" id="drop">
+        <input type="file" id="file-in" multiple accept=".xlsx,.xlsm,.csv">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 15v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
+        <b>Drop files here or tap to choose</b>
+        <span>Excel (.xlsx) or CSV. Use the filled-in template, or Profit &amp; Loss and Balance Sheet exports from your accounting app.</span>
+      </label>
+      <p class="tpl-line">Don't have your numbers in a file yet? <a href="samples/company_template.xlsx" download="flash_analyst_template.xlsx">Download the free template</a>.</p>
+      <ul class="file-list" id="file-list"></ul>
+      <label class="check" id="combine-row" hidden><input type="checkbox" id="combine"><span>These files are all for <b>one company</b> (for example a Profit &amp; Loss and a Balance Sheet). Leave unticked if each file is a different company.</span></label>
+      <label class="field" id="name-row"><span>Company name <em class="opt">optional</em></span><input id="co-name" maxlength="80" placeholder="Read from your file if left blank"></label>
+    </div>
+
+    <details class="app-card app-opts">
+      <summary><span class="app-card-h"><span class="step-n">3</span><h2>Options</h2><em class="opt">optional</em></span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="opts-body">
+        <label class="field"><span>Prepared by</span><input id="prep" maxlength="80" placeholder="Your name or firm, shown on every page"></label>
+        <label class="field color-field"><span>Brand colour</span><input type="color" id="brand" value="#1F3A5F"><small>Used for headings and charts.</small></label>
+        <fieldset class="grades-field" id="grades-field">
+          <legend>Your own grade scale <span class="badge-pro">PRO</span></legend>
+          <p>The lowest score for each grade. Anything below D is an F.</p>
+          <div class="grade-inputs">
+            <label>A <input type="number" id="g-A" min="1" max="100" value="80"></label>
+            <label>B <input type="number" id="g-B" min="1" max="100" value="65"></label>
+            <label>C <input type="number" id="g-C" min="1" max="100" value="50"></label>
+            <label>D <input type="number" id="g-D" min="1" max="100" value="35"></label>
+          </div>
+        </fieldset>
+      </div>
+    </details>
+
+    <div class="app-actions">
+      <button class="btn btn-primary btn-lg" type="button" id="go" disabled>Make My Report</button>
+      <button class="btn btn-secondary btn-lg" type="button" id="demo" disabled>Try The Demo</button>
+    </div>
+    <p class="app-msg" id="run-msg" role="status"></p>
+
+    <div class="results" id="results" hidden>
+      <div class="results-h">
+        <h2>Your Reports</h2>
+        <button class="btn btn-primary" type="button" id="dl-all" hidden>Download All (.zip)</button>
+      </div>
+      <div class="result-list" id="result-list"></div>
+    </div>
+
+    <p class="calc-note">Reports are for information only, not financial advice. Prefer to run Flash Analyst on your own computer instead? See the <a href="install.html">install guide</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="./">
+        <svg class="logo" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#111318"/><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg>
+        Flash Analyst
+      </a>
+      <nav aria-label="Footer">
+        <a href="./#how">How it works</a>
+        <a href="./#plans">Plans</a>
+        <a href="./#samples">Samples</a>
+        <a href="./#about">About</a>
+        <a href="app.html">Browser app</a>
+        <a href="calculator.html">Free score calculator</a>
+        <a href="learn.html">Learn the numbers</a>
+        <a href="install.html">Install guide</a>
+        <a href="changelog.html">What's new</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C.</p>
+    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
+  </div>
+</footer>
+
+<script src="assets/app/config.js"></script>
+<script src="assets/pyodide/pyodide.js"></script>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const STORE = window.FA_STORE && window.FA_STORE.store_id ? window.FA_STORE : null;
+  const GRADE_COLORS = { A: "#2E7D32", B: "#558B2F", C: "#A86F00", D: "#C2410C", F: "#C62828", "N/A": "#757575" };
+  const XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+    del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+  };
+
+  // ---------- Engine (Python running in the browser) ----------
+  let py = null, engineReady = null;
+  const setEngine = (state, text) => { $("engine").dataset.state = state; $("engine-text").textContent = text; };
+  const loadEngine = () => engineReady || (engineReady = (async () => {
+    setEngine("loading", "Getting ready… The first visit downloads about 14 MB, then it's saved for next time.");
+    py = await loadPyodide({ indexURL: "assets/pyodide/" });
+    const site = py.runPython("import site; site.getsitepackages()[0]");
+    for (const whl of ["et_xmlfile-2.0.0-py3-none-any.whl", "openpyxl-3.1.5-py2.py3-none-any.whl"]) {
+      const buf = await (await fetch("assets/pyodide/wheels/" + whl)).arrayBuffer();
+      py.unpackArchive(buf, "wheel", { extractDir: site });
+    }
+    const src = await (await fetch("assets/app/flash_analyst_web.py")).text();
+    py.FS.mkdirTree("/fa");
+    py.FS.writeFile("/fa/flash_analyst_web.py", src);
+    py.runPython("import sys, importlib; sys.path.insert(0, '/fa'); importlib.invalidate_caches(); import flash_analyst_web as fa");
+    setEngine("ready", "Ready");
+    refresh();
+  })().catch(err => {
+    console.error(err);
+    engineReady = null;
+    setEngine("error", "Couldn't start. Check your internet connection and reload the page.");
+    throw err;
+  }));
+
+  // ---------- License (Lemon Squeezy) ----------
+  const LS = "https://api.lemonsqueezy.com/v1/licenses/";
+  const WEEK = 7 * 864e5, GRACE = 30 * 864e5;
+  let license = STORE ? store.get("fa-license") : null;
+  const lsPost = async (endpoint, fields) => {
+    let res;
+    try {
+      res = await fetch(LS + endpoint, { method: "POST", headers: { Accept: "application/json" }, body: new URLSearchParams(fields) });
+    } catch (e) { throw new Error("offline"); }
+    try { return await res.json(); } catch (e) { throw new Error("The license server had a problem. Try again later."); }
+  };
+  const editionOf = meta => {
+    const p = (meta && meta.product_id) || 0;
+    if ((STORE.products.pro || []).includes(p)) return "pro";
+    if ((STORE.products.basic || []).includes(p)) return "basic";
+    return null;
+  };
+  const activate = async key => {
+    const reply = await lsPost("activate", { license_key: key, instance_name: "Browser on " + (navigator.platform || "device") });
+    if (!reply.activated) {
+      const err = reply.error || "the key wasn't accepted";
+      throw new Error(/limit/i.test(err) ? "This key is already in use on the maximum number of devices. Remove it from a device you no longer use, or contact support." : "License key not accepted: " + err + ".");
+    }
+    const meta = reply.meta || {}, id = (reply.instance || {}).id;
+    const edition = meta.store_id === STORE.store_id ? editionOf(meta) : null;
+    if (!edition) {
+      lsPost("deactivate", { license_key: key, instance_id: id }).catch(() => {});
+      throw new Error("This key isn't a Flash Analyst license.");
+    }
+    license = { key, instance_id: id, name: meta.customer_name || meta.customer_email || "licensed buyer",
+                order_id: meta.order_id || null, edition, checked_at: Date.now() };
+    store.set("fa-license", license);
+  };
+  const recheck = async () => {
+    if (!license || Date.now() - license.checked_at < WEEK) return;
+    try {
+      const reply = await lsPost("validate", { license_key: license.key, instance_id: license.instance_id });
+      if (!reply.valid || (reply.meta || {}).store_id !== STORE.store_id) {
+        license = null; store.del("fa-license");
+        $("lic-msg").textContent = "Your license is no longer valid. Contact support if this is a mistake.";
+      } else {
+        license.checked_at = Date.now(); store.set("fa-license", license);
+      }
+    } catch (e) {
+      if (Date.now() - license.checked_at > GRACE) { license = null; $("lic-msg").textContent = "Connect to the internet so your license can be checked."; }
+    }
+    refresh();
+  };
+  const licenseNote = () => license ? `Flash Analyst ${license.edition === "pro" ? "Pro" : "Basic"} · Licensed to ${license.name}${license.order_id ? " · Order #" + license.order_id : ""}` : null;
+
+  $("lic-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const key = $("lic-key").value.trim();
+    if (!key) { $("lic-msg").textContent = "Enter the license key from your receipt email."; return; }
+    $("lic-go").disabled = true; $("lic-msg").textContent = "Checking your key…";
+    try { await activate(key); $("lic-msg").textContent = ""; }
+    catch (err) { $("lic-msg").textContent = err.message === "offline" ? "Couldn't reach the license server. Check your internet connection and try again." : err.message; }
+    $("lic-go").disabled = false; refresh();
+  });
+  $("lic-remove").addEventListener("click", async () => {
+    if (!license) return;
+    try { await lsPost("deactivate", { license_key: license.key, instance_id: license.instance_id }); } catch (e) {}
+    license = null; store.del("fa-license"); $("lic-msg").textContent = "Removed. You can now use your key on another device."; refresh();
+  });
+
+  // ---------- Files ----------
+  let files = [];
+  const OK = /\.(xlsx|xlsm|csv)$/i;
+  const addFiles = list => {
+    const bad = [];
+    for (const f of list) {
+      if (!OK.test(f.name)) { bad.push(f.name); continue; }
+      if (!files.some(x => x.name === f.name && x.size === f.size)) files.push(f);
+    }
+    $("run-msg").textContent = bad.length ? "Skipped " + bad.join(", ") + ": only Excel (.xlsx) and CSV files work." : "";
+    refresh();
+  };
+  $("file-in").addEventListener("change", e => { addFiles([...e.target.files]); e.target.value = ""; });
+  const drop = $("drop");
+  ["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove("over"); }));
+  drop.addEventListener("drop", e => addFiles([...e.dataTransfer.files]));
+  $("file-list").addEventListener("click", e => {
+    const b = e.target.closest("[data-i]");
+    if (b) { files.splice(+b.dataset.i, 1); refresh(); }
+  });
+  $("combine").addEventListener("change", refresh);
+
+  // ---------- Screen state ----------
+  function refresh() {
+    $("lic-soon").hidden = !!STORE;
+    $("lic-form").hidden = !STORE || !!license;
+    $("lic-ok").hidden = !license;
+    if (license) $("lic-who").textContent = licenseNote();
+    $("file-list").innerHTML = files.map((f, i) =>
+      `<li><span class="fx">${/\.csv$/i.test(f.name) ? "CSV" : "XLSX"}</span><span class="fn">${esc(f.name)}</span><button type="button" data-i="${i}" aria-label="Remove ${esc(f.name)}">×</button></li>`).join("");
+    $("combine-row").hidden = files.length < 2;
+    $("name-row").hidden = files.length > 1 && !$("combine").checked;
+    const pro = license && license.edition === "pro";
+    $("grades-field").disabled = !pro;
+    const ready = $("engine").dataset.state === "ready";
+    $("demo").disabled = !ready || busy;
+    $("go").disabled = !ready || busy || !license || !files.length;
+    $("go").title = !license ? (STORE ? "Activate your license key first" : "Checkout opens soon") : !files.length ? "Add a file first" : "";
+  }
+  let busy = false, demoMode = false;
+
+  // ---------- Running ----------
+  const gradesText = () => {
+    const v = ["A", "B", "C", "D"].map(l => `${l}=${$("g-" + l).value || ""}`);
+    return v.join(",") === "A=80,B=65,C=50,D=35" ? null : v.join(",");
+  };
+  let runNo = 0, lastOut = null, lastZip = null;
+  const download = (name, mime) => {
+    const blob = new Blob([py.FS.readFile(lastOut + "/" + name)], { type: mime });
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+  };
+  const show = reply => {
+    const list = $("result-list");
+    list.innerHTML = reply.companies.map(c => `
+      <article class="result">
+        <div class="result-top">
+          <span class="result-grade" style="background:${GRADE_COLORS[c.grade] || "#757575"}">${esc(c.grade)}</span>
+          <div class="result-name"><b>${esc(c.name)}</b><small>${c.years[0]}–${c.years[1]} · Health score ${c.score == null ? "n/a" : c.score + "/100"}</small></div>
+          <button class="btn btn-secondary btn-sm" type="button" data-dl="${esc(c.file)}">Download</button>
+        </div>
+        ${c.warnings.length ? `<ul class="result-notes warn">${c.warnings.slice(0, 3).map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
+        ${c.insights.length ? `<ul class="result-notes">${c.insights.slice(0, 2).map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
+      </article>`).join("") +
+      (reply.files.includes("peer_comparison.xlsx") ? `
+      <article class="result">
+        <div class="result-top">
+          <span class="result-grade cmp" aria-hidden="true">≡</span>
+          <div class="result-name"><b>Peer comparison</b><small>${reply.companies.length} companies ranked side by side</small></div>
+          <button class="btn btn-secondary btn-sm" type="button" data-dl="peer_comparison.xlsx">Download</button>
+        </div>
+      </article>` : "");
+    lastZip = reply.zip;
+    $("dl-all").hidden = !reply.zip;
+    $("results").hidden = false;
+    $("results").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  };
+  $("result-list").addEventListener("click", e => { const b = e.target.closest("[data-dl]"); if (b) download(b.dataset.dl, XLSX); });
+  $("dl-all").addEventListener("click", () => lastZip && download(lastZip, "application/zip"));
+
+  const run = async demo => {
+    if (busy) return;
+    busy = true; demoMode = demo; refresh();
+    $("run-msg").textContent = "Making your report…";
+    try {
+      await loadEngine();
+      runNo++;
+      const inDir = `/work/in${runNo}`, out = `/work/out${runNo}`;
+      py.FS.mkdirTree(inDir);
+      let groups;
+      if (demo) {
+        const paths = JSON.parse(py.globals.get("fa").sample_files(inDir));
+        groups = paths.map(p => ({ files: [p] }));
+      } else {
+        const paths = [];
+        for (const [i, f] of files.entries()) {
+          py.FS.mkdirTree(`${inDir}/${i}`);
+          const p = `${inDir}/${i}/${f.name.replace(/[^\w.\- ]+/g, "_")}`;
+          py.FS.writeFile(p, new Uint8Array(await f.arrayBuffer()));
+          paths.push(p);
+        }
+        const one = paths.length === 1 || $("combine").checked;
+        groups = one ? [{ files: paths, name: $("co-name").value }] : paths.map(p => ({ files: [p] }));
+      }
+      const request = {
+        groups, out_dir: out,
+        pro: demo || license.edition === "pro",
+        brand_color: $("brand").value.replace("#", ""),
+        prepared_by: $("prep").value.trim() || (demo ? "Flash Analyst Demo" : null),
+        grades: (demo || license.edition === "pro") ? gradesText() : null,
+        license_note: demo ? "Flash Analyst demo · sample companies with made-up numbers" : licenseNote()
+      };
+      py.globals.set("fa_request", JSON.stringify(request));
+      const reply = JSON.parse(py.runPython("fa.run(fa_request)"));
+      if (!reply.ok) {
+        const why = reply.error.replace(/Run `flash-analyst template` for a ready-to-fill file\./, "The free template above is ready to fill in.");
+        $("run-msg").textContent = "Couldn't read that: " + why;
+        return;
+      }
+      lastOut = out;
+      $("run-msg").textContent = demo ? "Demo reports ready. These use sample companies with made-up numbers." : "Done! Your report is ready.";
+      show(reply);
+    } catch (err) {
+      console.error(err);
+      $("run-msg").textContent = "Something went wrong. Reload the page and try again.";
+    } finally {
+      busy = false; demoMode = false; refresh();
+    }
+  };
+  $("go").addEventListener("click", () => run(false));
+  $("demo").addEventListener("click", () => run(true));
+
+  refresh();
+  if (license) recheck();
+  (window.requestIdleCallback || (f => setTimeout(f, 300)))(() => loadEngine().catch(() => {}));
+})();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
