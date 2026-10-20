@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- security-meta -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-zs/Up6YojxygR/UOfwFkr8W0VqMsmkWAvPvNt+yhCFI=' 'sha256-GDFnROiHF3f1pz/GByZF0MHbc/CYH8oLS5zZQVyXH58='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.lemonsqueezy.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- security-meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Flash Analyst App</title>
 <meta name="description" content="Make a Flash Analyst report in your browser: nothing to install, and your files never leave your device.">
@@ -269,13 +273,26 @@
   };
   const licenseNote = () => license ? `Flash Analyst ${license.edition === "pro" ? "Pro" : "Basic"} · Licensed to ${license.name}${license.order_id ? " · Order #" + license.order_id : ""}` : null;
 
+  // Rate limit: after 5 wrong keys, wait a minute before trying again (slows down key guessing)
+  const MAX_TRIES = 5, COOLDOWN = 60e3;
+  let tries = [];
   $("lic-form").addEventListener("submit", async e => {
     e.preventDefault();
     const key = $("lic-key").value.trim();
     if (!key) { $("lic-msg").textContent = "Enter the license key from your receipt email."; return; }
+    if (key.length > 100 || !/^[\w-]+$/.test(key)) { $("lic-msg").textContent = "That doesn't look like a license key. Copy it exactly from your receipt email."; return; }
+    tries = tries.filter(t => Date.now() - t < COOLDOWN);
+    if (tries.length >= MAX_TRIES) {
+      const wait = Math.ceil((COOLDOWN - (Date.now() - tries[0])) / 1000);
+      $("lic-msg").textContent = `Too many tries. Please wait ${wait} seconds and try again.`;
+      return;
+    }
     $("lic-go").disabled = true; $("lic-msg").textContent = "Checking your key…";
-    try { await activate(key); $("lic-msg").textContent = ""; }
-    catch (err) { $("lic-msg").textContent = err.message === "offline" ? "Couldn't reach the license server. Check your internet connection and try again." : err.message; }
+    try { await activate(key); tries = []; $("lic-msg").textContent = ""; }
+    catch (err) {
+      if (err.message !== "offline") tries.push(Date.now());
+      $("lic-msg").textContent = err.message === "offline" ? "Couldn't reach the license server. Check your internet connection and try again." : err.message;
+    }
     $("lic-go").disabled = false; refresh();
   });
   $("lic-remove").addEventListener("click", async () => {
@@ -345,7 +362,7 @@
       <article class="result">
         <div class="result-top">
           <span class="result-grade" style="background:${GRADE_COLORS[c.grade] || "#757575"}">${esc(c.grade)}</span>
-          <div class="result-name"><b>${esc(c.name)}</b><small>${c.years[0]}–${c.years[1]} · Health score ${c.score == null ? "n/a" : c.score + "/100"}</small></div>
+          <div class="result-name"><b>${esc(c.name)}</b><small>${Number(c.years[0])}–${Number(c.years[1])} · Health score ${c.score == null ? "n/a" : Number(c.score) + "/100"}</small></div>
           <button class="btn btn-secondary btn-sm" type="button" data-dl="${esc(c.file)}">Download</button>
         </div>
         ${c.warnings.length ? `<ul class="result-notes warn">${c.warnings.slice(0, 3).map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
@@ -355,7 +372,7 @@
       <article class="result">
         <div class="result-top">
           <span class="result-grade cmp" aria-hidden="true">≡</span>
-          <div class="result-name"><b>Peer comparison</b><small>${reply.companies.length} companies ranked side by side</small></div>
+          <div class="result-name"><b>Peer comparison</b><small>${Number(reply.companies.length)} companies ranked side by side</small></div>
           <button class="btn btn-secondary btn-sm" type="button" data-dl="peer_comparison.xlsx">Download</button>
         </div>
       </article>` : "");

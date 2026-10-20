@@ -419,6 +419,14 @@ def _load_partial(path):
     return by_year, found_name
 
 
+def safe_text(text, limit=100):
+    """Text from a customer's file, made safe to put in a cell: no control characters, and no leading
+    = + - @ that Excel would run as a formula (formula injection)."""
+    text = "".join(ch if ch.isprintable() else " " for ch in str(text))
+    text = " ".join(text.split())[:limit]
+    return text.lstrip("=+-@").strip()
+
+
 def load_company(paths, name=None, default_name=None):
     """Combine one or more files (e.g. a P&L export and a balance sheet export) into one company."""
     paths = [Path(p) for p in paths]
@@ -459,8 +467,8 @@ def load_company(paths, name=None, default_name=None):
         r = partial[0]
         miss = ", ".join(FIELDS[k] for k in REQUIRED if r.get(k) is None)
         raise DataError(f"{label}: year {r['year']} is missing {miss}")
-    company = (name or found_name or default_name
-               or paths[0].stem.replace("_", " ").replace("-", " ").title())
+    fallback = paths[0].stem.replace("_", " ").replace("-", " ").title()
+    company = safe_text(name or found_name or default_name or fallback) or safe_text(fallback) or "Company"
     return CompanyData(name=company, rows=complete)
 
 
@@ -1037,8 +1045,8 @@ def _title(ws, text, subtitle, theme):
 
 def _subtitle(analysis, prepared_by):
     parts = [f"Generated {date.today():%B %d, %Y}"]
-    if prepared_by:
-        parts.append(f"Prepared by {prepared_by}")
+    if prepared_by and safe_text(prepared_by):
+        parts.append(f"Prepared by {safe_text(prepared_by)}")
     return " · ".join(parts)
 
 
@@ -1397,8 +1405,8 @@ def build_company_workbook(analysis, path, brand_color="1F3A5F", prepared_by=Non
     if pro:
         _client_needs_sheet(wb, analysis, theme, subtitle)
     wb.properties.title = f"{analysis.company.name} — Company Analysis"
-    if prepared_by:
-        wb.properties.creator = prepared_by
+    if prepared_by and safe_text(prepared_by):
+        wb.properties.creator = safe_text(prepared_by)
     _stamp_license(wb, wb["Dashboard"], license_note, theme)
     wb.save(path)
     return path
