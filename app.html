@@ -15,13 +15,12 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111318%27/%3E%3Cpath d=%27M18 5 9 18h6l-2 9 10-14h-6z%27 fill=%27%234263EB%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script>try { var t = localStorage.getItem("fa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="top">
   <div class="wrap">
@@ -70,7 +69,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="section page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">Flash Analyst app</p>
@@ -94,6 +93,7 @@
         <label class="field"><span>License key</span><input id="lic-key" autocomplete="off" spellcheck="false" placeholder="e.g. 38b1460a-5104-4067-a91d-77b872934d51"><small>It's in your receipt email.</small></label>
         <button class="btn btn-primary" type="submit" id="lic-go">Activate</button>
       </form>
+      <p class="lic-consent" id="lic-consent" hidden>When you press Activate, your key and a short device label are sent to our payment provider, Lemon Squeezy, to check it. Nothing else is sent. See the <a href="privacy.html">privacy policy</a>.</p>
       <div id="lic-ok" hidden>
         <p class="lic-ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span id="lic-who"></span></p>
         <button class="btn btn-secondary btn-sm" type="button" id="lic-remove">Remove from this device</button>
@@ -171,10 +171,12 @@
         <a href="changelog.html">What's new</a>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund Policy</a>
+        <a href="cookies.html">Cookie Policy</a>
       </nav>
     </div>
-    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C.</p>
-    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C. · Australia</p>
+    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional. QuickBooks, Xero, Wave, FreshBooks, Sage, Zoho Books, Excel and Google Sheets are trademarks of their owners; Flash Analyst isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
 
@@ -184,7 +186,7 @@
 (() => {
   const $ = id => document.getElementById(id);
   const STORE = window.FA_STORE && window.FA_STORE.store_id ? window.FA_STORE : null;
-  const GRADE_COLORS = { A: "#2E7D32", B: "#558B2F", C: "#A86F00", D: "#C2410C", F: "#C62828", "N/A": "#757575" };
+  const GRADE_COLORS = { A: "#2E7D32", B: "#4A7A28", C: "#8A5C00", D: "#C2410C", F: "#C62828", "N/A": "#757575" };
   const XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const store = {
@@ -309,6 +311,7 @@
   function refresh() {
     $("lic-soon").hidden = !!STORE;
     $("lic-form").hidden = !STORE || !!license;
+    $("lic-consent").hidden = $("lic-form").hidden;
     $("lic-ok").hidden = !license;
     if (license) $("lic-who").textContent = licenseNote();
     $("file-list").innerHTML = files.map((f, i) =>

@@ -35,7 +35,7 @@
     menuBtn.addEventListener("click", () => setMenu(menu.hidden));
     menu.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
     document.addEventListener("keydown", e => { if (e.key === "Escape" && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
-    window.addEventListener("resize", () => { if (window.innerWidth > 1020) setMenu(false); });
+    window.addEventListener("resize", () => { if (window.innerWidth > 1320) setMenu(false); });
   }
 
   // Launch banner can be hidden; remembered for this visitor
@@ -68,4 +68,32 @@
       }
     });
   });
+  // Cookie notice: the site uses no cookies or tracking, so there is nothing to accept or refuse.
+  // It just says so once, and remembers that it was seen.
+  let seen = false;
+  try { seen = localStorage.getItem("fa-notice") === "1"; } catch (e) {}
+  if (!seen) {
+    const box = document.createElement("div");
+    box.className = "notice";
+    box.setAttribute("role", "region");
+    box.setAttribute("aria-label", "Cookie notice");
+    box.innerHTML = '<p><b>No cookies, no tracking.</b> This site only saves settings like dark mode on your device. ' +
+      '<a href="cookies.html">Cookie policy</a></p><button class="btn btn-primary btn-sm" type="button">OK</button>';
+    box.querySelector("button").addEventListener("click", () => {
+      try { localStorage.setItem("fa-notice", "1"); } catch (e) {}
+      box.remove();
+    });
+    document.body.appendChild(box);
+  }
+
+  // "Delete everything this site saved on this device" buttons (privacy and cookie pages)
+  document.querySelectorAll("[data-clear-local]").forEach(btn => btn.addEventListener("click", () => {
+    let n = 0;
+    try {
+      Object.keys(localStorage).filter(k => k.startsWith("fa-")).forEach(k => { localStorage.removeItem(k); n++; });
+    } catch (e) {}
+    delete root.dataset.theme;
+    const msg = btn.closest("p").nextElementSibling;
+    if (msg) msg.textContent = n ? "Done. Everything this site saved on this device has been deleted." : "There was nothing saved on this device.";
+  }));
 })();

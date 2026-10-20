@@ -15,13 +15,12 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111318%27/%3E%3Cpath d=%27M18 5 9 18h6l-2 9 10-14h-6z%27 fill=%27%234263EB%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script>try { var t = localStorage.getItem("fa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="top">
   <div class="wrap">
@@ -70,7 +69,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="section page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">Learn the numbers</p>
@@ -114,39 +113,39 @@
           <h2>Money In And Money Out</h2>
           <p class="group-intro">The profit and loss statement (P&L) shows what the business earned and spent over a year. These are its main lines, from top to bottom.</p>
           <div class="terms">
-          <article class="term" id="revenue">
+          <article class="gterm" id="revenue">
             <h3>Revenue (Sales)</h3>
             <p>All the money the business made from customers before taking anything off. Also called sales, turnover or income.</p>
             <p class="example"><span>Bakery example</span>The bakery sold $500,000 of bread, cakes and coffee this year.</p>
             <p class="tip">Revenue is the top line. Everything else on the P&L is taken away from it.</p>
           </article>
-          <article class="term" id="cogs">
+          <article class="gterm" id="cogs">
             <h3>Cost Of Goods Sold</h3>
             <p>What it cost to make or buy the things the business sold, like ingredients or stock. Also called cost of sales.</p>
             <p class="example"><span>Bakery example</span>Flour, butter, coffee beans and packaging cost the bakery $200,000.</p>
             <p class="tip">This cost goes up and down with sales: sell more cakes, buy more flour.</p>
           </article>
-          <article class="term" id="gross-profit">
+          <article class="gterm" id="gross-profit">
             <h3>Gross Profit</h3>
             <p>What's left from sales after paying for the goods themselves.</p>
             <p class="formula"><span>Formula</span>Revenue − Cost of goods sold</p>
             <p class="example"><span>Bakery example</span>$500,000 − $200,000 = <b>$300,000</b></p>
             <p class="tip">Gross profit has to pay for everything else: rent, wages, power and more.</p>
           </article>
-          <article class="term" id="opex">
+          <article class="gterm" id="opex">
             <h3>Operating Expenses</h3>
             <p>The everyday costs of running the business that aren't the goods themselves, like rent, wages, power, insurance and marketing.</p>
             <p class="example"><span>Bakery example</span>Rent, staff and other running costs came to $230,000.</p>
             <p class="tip">These costs mostly stay the same even when sales change, so a quiet month hurts.</p>
           </article>
-          <article class="term" id="operating-profit">
+          <article class="gterm" id="operating-profit">
             <h3>Operating Profit</h3>
             <p>Profit from the business's main work, before interest on loans and tax.</p>
             <p class="formula"><span>Formula</span>Gross profit − Operating expenses</p>
             <p class="example"><span>Bakery example</span>$300,000 − $230,000 = <b>$70,000</b></p>
             <p class="tip">Also called EBIT (earnings before interest and tax).</p>
           </article>
-          <article class="term" id="net-income">
+          <article class="gterm" id="net-income">
             <h3>Net Income (Profit)</h3>
             <p>The bottom line: what's left after every cost, interest and tax. If it's negative, the business made a loss.</p>
             <p class="formula"><span>Formula</span>Operating profit − Interest − Tax</p>
@@ -159,21 +158,21 @@
           <h2>Margins</h2>
           <p class="group-intro">A margin turns a profit into a percentage of sales, so you can compare a small business with a big one, or this year with last year.</p>
           <div class="terms">
-          <article class="term" id="gross-margin">
+          <article class="gterm" id="gross-margin">
             <h3>Gross Margin</h3>
             <p>How many cents of each sales dollar are left after paying for the goods.</p>
             <p class="formula"><span>Formula</span>Gross profit ÷ Revenue</p>
             <p class="example"><span>Bakery example</span>$300,000 ÷ $500,000 = <b>60%</b></p>
             <p class="tip">Normal gross margins are very different between industries: a software company might be near 80%, a supermarket nearer 25%.</p>
           </article>
-          <article class="term" id="operating-margin">
+          <article class="gterm" id="operating-margin">
             <h3>Operating Margin</h3>
             <p>How many cents of each sales dollar are left after running costs too.</p>
             <p class="formula"><span>Formula</span>Operating profit ÷ Revenue</p>
             <p class="example"><span>Bakery example</span>$70,000 ÷ $500,000 = <b>14%</b></p>
             <p class="tip">If gross margin is healthy but operating margin is thin, running costs are probably the problem.</p>
           </article>
-          <article class="term" id="net-margin">
+          <article class="gterm" id="net-margin">
             <h3>Net Margin</h3>
             <p>How many cents of each sales dollar end up as profit.</p>
             <p class="formula"><span>Formula</span>Net income ÷ Revenue</p>
@@ -186,14 +185,14 @@
           <h2>Growth</h2>
           <p class="group-intro">Is the business getting bigger or smaller? Growth compares sales over time.</p>
           <div class="terms">
-          <article class="term" id="revenue-growth">
+          <article class="gterm" id="revenue-growth">
             <h3>Revenue Growth</h3>
             <p>How much sales went up or down compared with last year.</p>
             <p class="formula"><span>Formula</span>(This year − Last year) ÷ Last year</p>
             <p class="example"><span>Bakery example</span>Last year the bakery sold $450,000. ($500,000 − $450,000) ÷ $450,000 = <b>11.1%</b></p>
             <p class="tip">A negative number means sales fell.</p>
           </article>
-          <article class="term" id="cagr">
+          <article class="gterm" id="cagr">
             <h3>CAGR</h3>
             <p>Compound annual growth rate: the steady yearly growth that would take sales from where they started to where they are now. It smooths out up-and-down years.</p>
             <p class="formula"><span>Formula</span>(Last ÷ First)<sup>1 ÷ years</sup> − 1</p>
@@ -206,19 +205,19 @@
           <h2>What It Owns And Owes</h2>
           <p class="group-intro">The balance sheet is a snapshot of one day, usually the last day of the year. It always balances: what the business owns = what it owes + what belongs to the owners.</p>
           <div class="terms">
-          <article class="term" id="assets">
+          <article class="gterm" id="assets">
             <h3>Assets</h3>
             <p>Everything the business owns that has value: cash, money customers owe it, stock, equipment, vehicles and property.</p>
             <p class="example"><span>Bakery example</span>The bakery's ovens, van, stock and cash add up to $400,000.</p>
             <p class="tip"><b>Current assets</b> are the ones that will turn into cash within a year, like cash, stock and money owed by customers. The bakery has $120,000 of them.</p>
           </article>
-          <article class="term" id="liabilities">
+          <article class="gterm" id="liabilities">
             <h3>Liabilities</h3>
             <p>Everything the business owes: bills to suppliers, loans, tax and wages due.</p>
             <p class="example"><span>Bakery example</span>The bakery owes $150,000 in total.</p>
             <p class="tip"><b>Current liabilities</b> are the ones due within a year. The bakery has $80,000 of them.</p>
           </article>
-          <article class="term" id="equity">
+          <article class="gterm" id="equity">
             <h3>Equity</h3>
             <p>The part of the business that belongs to its owners on paper: what it owns minus what it owes.</p>
             <p class="formula"><span>Formula</span>Assets − Liabilities</p>
@@ -231,35 +230,35 @@
           <h2>Key Ratios</h2>
           <p class="group-intro">Ratios compare two numbers to answer one question about the business. Flash Analyst works out 12 of them as live Excel formulas.</p>
           <div class="terms">
-          <article class="term" id="current-ratio">
+          <article class="gterm" id="current-ratio">
             <h3>Current Ratio</h3>
             <p>Can the business pay the bills due this year from things it can turn into cash this year?</p>
             <p class="formula"><span>Formula</span>Current assets ÷ Current liabilities</p>
             <p class="example"><span>Bakery example</span>$120,000 ÷ $80,000 = <b>1.5x</b></p>
             <p class="tip">Below 1x means bills due soon are bigger than short-term assets. In the Health Score, 2.0x or more gets full marks.</p>
           </article>
-          <article class="term" id="debt-to-equity">
+          <article class="gterm" id="debt-to-equity">
             <h3>Debt To Equity</h3>
             <p>How much the business relies on money it owes compared with the owners' own money.</p>
             <p class="formula"><span>Formula</span>Liabilities ÷ Equity</p>
             <p class="example"><span>Bakery example</span>$150,000 ÷ $250,000 = <b>0.6x</b></p>
             <p class="tip">Lower usually means safer. In the Health Score, 0.5x or less gets full marks, and 3.0x or more gets none.</p>
           </article>
-          <article class="term" id="roa">
+          <article class="gterm" id="roa">
             <h3>Return On Assets (ROA)</h3>
             <p>How much profit the business makes from everything it owns.</p>
             <p class="formula"><span>Formula</span>Net income ÷ Assets</p>
             <p class="example"><span>Bakery example</span>$45,000 ÷ $400,000 = <b>11.3%</b></p>
             <p class="tip">Useful for comparing businesses that need lots of equipment with ones that don't.</p>
           </article>
-          <article class="term" id="roe">
+          <article class="gterm" id="roe">
             <h3>Return On Equity (ROE)</h3>
             <p>How much profit the business makes for each dollar the owners have in it.</p>
             <p class="formula"><span>Formula</span>Net income ÷ Equity</p>
             <p class="example"><span>Bakery example</span>$45,000 ÷ $250,000 = <b>18%</b></p>
             <p class="tip">A very high ROE can come from lots of debt rather than great results, so check debt to equity too.</p>
           </article>
-          <article class="term" id="interest-coverage">
+          <article class="gterm" id="interest-coverage">
             <h3>Interest Coverage</h3>
             <p>How many times operating profit could pay the interest on the business's loans.</p>
             <p class="formula"><span>Formula</span>Operating profit ÷ Interest</p>
@@ -272,26 +271,26 @@
           <h2>Cash</h2>
           <p class="group-intro">Profit isn't the same as cash. Customers might pay late, and buying equipment uses cash without counting as a cost straight away.</p>
           <div class="terms">
-          <article class="term" id="operating-cash-flow">
+          <article class="gterm" id="operating-cash-flow">
             <h3>Operating Cash Flow</h3>
             <p>The cash that actually came in from running the business during the year.</p>
             <p class="example"><span>Bakery example</span>The bakery's cash from running the business was $65,000.</p>
             <p class="tip">Found on the cash flow statement as "net cash from operating activities".</p>
           </article>
-          <article class="term" id="capex">
+          <article class="gterm" id="capex">
             <h3>Capital Expenditure (Capex)</h3>
             <p>Cash spent on long-lasting things like equipment, vehicles or buildings.</p>
             <p class="example"><span>Bakery example</span>The bakery bought a new oven for $20,000.</p>
             <p class="tip">Capex keeps the business running and growing, but it uses cash.</p>
           </article>
-          <article class="term" id="free-cash-flow">
+          <article class="gterm" id="free-cash-flow">
             <h3>Free Cash Flow</h3>
             <p>The cash left over after running the business and paying for equipment. It can repay loans, pay the owners or be saved.</p>
             <p class="formula"><span>Formula</span>Operating cash flow − Capex</p>
             <p class="example"><span>Bakery example</span>$65,000 − $20,000 = <b>$45,000</b></p>
             <p class="tip">Negative free cash flow for a year or two can be fine when a business is investing, but not forever.</p>
           </article>
-          <article class="term" id="fcf-margin">
+          <article class="gterm" id="fcf-margin">
             <h3>Free Cash Flow Margin</h3>
             <p>How many cents of each sales dollar turn into free cash.</p>
             <p class="formula"><span>Formula</span>Free cash flow ÷ Revenue</p>
@@ -337,10 +336,12 @@
         <a href="changelog.html">What's new</a>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund Policy</a>
+        <a href="cookies.html">Cookie Policy</a>
       </nav>
     </div>
-    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C.</p>
-    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C. · Australia</p>
+    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional. QuickBooks, Xero, Wave, FreshBooks, Sage, Zoho Books, Excel and Google Sheets are trademarks of their owners; Flash Analyst isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
 
@@ -348,7 +349,7 @@
 (() => {
   // Filter the terms as you type
   const q = document.getElementById("learn-q");
-  const terms = [...document.querySelectorAll(".term")];
+  const terms = [...document.querySelectorAll(".gterm")];
   const groups = [...document.querySelectorAll(".learn-group")];
   const empty = document.getElementById("learn-empty");
   q.addEventListener("input", () => {
@@ -358,7 +359,7 @@
       const hit = words.every(w => t.textContent.toLowerCase().includes(w));
       t.hidden = !hit; any = any || hit;
     });
-    groups.forEach(g => { g.hidden = !g.querySelector(".term:not([hidden])"); });
+    groups.forEach(g => { g.hidden = !g.querySelector(".gterm:not([hidden])"); });
     empty.hidden = any;
   });
   // Highlight the topic you're reading

@@ -15,13 +15,12 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111318%27/%3E%3Cpath d=%27M18 5 9 18h6l-2 9 10-14h-6z%27 fill=%27%234263EB%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script>try { var t = localStorage.getItem("fa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="top">
   <div class="wrap">
@@ -70,7 +69,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="section page-hero">
   <div class="wrap narrow">
     <p class="eyebrow">Free health score calculator</p>
@@ -151,10 +150,12 @@
         <a href="changelog.html">What's new</a>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund Policy</a>
+        <a href="cookies.html">Cookie Policy</a>
       </nav>
     </div>
-    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C.</p>
-    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C. · Australia</p>
+    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional. QuickBooks, Xero, Wave, FreshBooks, Sage, Zoho Books, Excel and Google Sheets are trademarks of their owners; Flash Analyst isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
 
@@ -162,7 +163,7 @@
 (() => {
   // Same rules as the Flash Analyst report (flash_analyst/analysis.py)
   const WEIGHTS = { profitability: 25, growth: 25, liquidity: 20, leverage: 15, cash: 15 };
-  const GRADE_COLORS = { A: "#2E7D32", B: "#558B2F", C: "#A86F00", D: "#C2410C", F: "#C62828" };
+  const GRADE_COLORS = { A: "#2E7D32", B: "#4A7A28", C: "#8A5C00", D: "#C2410C", F: "#C62828" };
   const clamp = x => Math.max(0, Math.min(1, x));
   const div = (a, b) => (a == null || b == null || b === 0) ? null : a / b;
 

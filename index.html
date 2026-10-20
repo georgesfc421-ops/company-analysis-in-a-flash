@@ -15,16 +15,15 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111318%27/%3E%3Cpath d=%27M18 5 9 18h6l-2 9 10-14h-6z%27 fill=%27%234263EB%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script>try { var t = localStorage.getItem("fa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
-<div class="announce" id="announce"><a href="#plans"><span class="new">LAUNCH</span>Launch pricing: Flash Analyst Basic is $49 (regular $79) →</a><button type="button" id="announce-close" aria-label="Hide announcement">×</button></div>
+<div class="announce" id="announce"><a href="#plans"><span class="new">LAUNCH</span>Launch price: Flash Analyst Basic is $49, going up to $79 after launch →</a><button type="button" id="announce-close" aria-label="Hide announcement">×</button></div>
 <header class="nav" id="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Flash Analyst home">
@@ -72,7 +71,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
 <section class="hero">
   <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span><span class="blob b3" aria-hidden="true"></span>
@@ -101,7 +100,7 @@
 
     <div class="mock-wrap">
     <div class="float float-2" aria-hidden="true"><span class="ic" style="background:var(--excel-soft)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D6F42" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span>Report ready<small>in under a second</small></span></div>
-    <div class="float float-1" aria-hidden="true"><span class="ic" style="background:#558B2F;color:#fff;font-weight:700">B</span><span>Health score 76<small>Maple Ridge sample</small></span></div>
+    <div class="float float-1" aria-hidden="true"><span class="ic" style="background:#4A7A28;color:#fff;font-weight:700">B</span><span>Health score 76<small>Maple Ridge sample</small></span></div>
     <div class="app hero-app" role="img" aria-label="The Dashboard tab of a sample Flash Analyst report for Maple Ridge Outfitters: revenue $2.1M, health score 76, grade B, a revenue and net income chart, and key insights.">
       <div class="app-bar">
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -286,7 +285,7 @@
         <ul class="tablist" role="tablist" aria-label="Report tabs">
           <li><button type="button" role="tab" id="t-dash" aria-controls="p-dash" aria-selected="true"><span class="k">Tab 1 · Dashboard</span><span class="h">The answer at a glance</span><span class="d">Headline numbers, a 0–100 Financial Health Score with a letter grade, revenue and margin charts, key insights and watch-outs written in plain English.</span></button></li>
           <li><button type="button" role="tab" id="t-fin" aria-controls="p-fin" aria-selected="false" tabindex="-1"><span class="k">Tab 2 · Financials</span><span class="h">The numbers, cleaned up</span><span class="d">Every year laid out as a proper financial statement, formatted and easy to read.</span></button></li>
-          <li><button type="button" role="tab" id="t-rat" aria-controls="p-rat" aria-selected="false" tabindex="-1"><span class="k">Tab 3 · Ratios</span><span class="h">12 ratios as live formulas</span><span class="d">Margins, growth, return on equity, current ratio, debt-to-equity, free cash flow and more. Change a number and everything updates.</span></button></li>
+          <li><button type="button" role="tab" id="t-rat" aria-controls="p-rat" aria-selected="false" tabindex="-1"><span class="k">Tab 3 · Ratios</span><span class="h">12 ratios as live formulas</span><span class="d">Margins, growth, return on equity, current ratio, debt-to-equity, free cash flow and more. Change a number on the Financials tab and the ratios update.</span></button></li>
           <li><button type="button" role="tab" id="t-for" aria-controls="p-for" aria-selected="false" tabindex="-1"><span class="k">Tab 4 · Forecast</span><span class="h">Where it's heading</span><span class="d">A 3-year projection with growth and margin assumptions you can adjust, plus a chart of actual against forecast.</span></button></li>
         </ul>
         <p class="report-note">Analyzing several companies? You also get a peer comparison workbook that ranks them side by side.</p>
@@ -452,8 +451,8 @@
       <div class="grades" aria-label="Grade scale">
         <h3>Grades</h3>
         <div class="grade"><b style="background:#2E7D32">A</b>80 and above</div>
-        <div class="grade"><b style="background:#558B2F">B</b>65 to 79</div>
-        <div class="grade"><b style="background:#A86F00">C</b>50 to 64</div>
+        <div class="grade"><b style="background:#4A7A28">B</b>65 to 79</div>
+        <div class="grade"><b style="background:#8A5C00">C</b>50 to 64</div>
         <div class="grade"><b style="background:#C2410C">D</b>35 to 49</div>
         <div class="grade"><b style="background:#C62828">F</b>Below 35</div>
         <p class="grades-pro"><span class="badge-pro">PRO</span> Set your own grade scale, like A at 85 and above.</p>
@@ -468,7 +467,7 @@
     <div class="head">
       <span class="badge-pro">PRO</span>
       <h2>What This Client Needs</h2>
-      <p>Pro reports add an action plan tab. Every problem in the numbers becomes a row: how urgent it is, what the client needs to do, a service you could offer them and a target to aim for. Owner, due date and status columns let you track progress with the client.</p>
+      <p>Pro reports add an action plan tab. Each problem it finds in the numbers becomes a row: how urgent it is, what the client needs to do, a service you could offer them and a target to aim for. Owner, due date and status columns let you track progress with the client.</p>
     </div>
     <div class="app">
       <div class="app-bar">
@@ -508,7 +507,7 @@
       <table class="plain">
         <thead><tr><th></th><th class="us">Flash Analyst</th><th>By hand in Excel</th><th>Hiring an accountant</th></tr></thead>
         <tbody>
-          <tr><td>Time for a report</td><td class="us">Under a second</td><td>Hours</td><td>Days to weeks</td></tr>
+          <tr><td>Time for a report</td><td class="us">Under a second</td><td>Often hours</td><td>Often days</td></tr>
           <tr><td>Cost</td><td class="us">$49–$149, once</td><td>Your time</td><td>Professional fees each time</td></tr>
           <tr><td>Health score and 12 key ratios</td><td class="us"><span class="yes" aria-label="Yes">✓</span></td><td>If you build the formulas</td><td><span class="yes" aria-label="Yes">✓</span></td></tr>
           <tr><td>Plain-English insights</td><td class="us"><span class="yes" aria-label="Yes">✓</span></td><td><span class="no" aria-label="No">–</span></td><td><span class="yes" aria-label="Yes">✓</span></td></tr>
@@ -532,7 +531,7 @@
       <div class="plan">
         <div class="plan-top"><h3>Basic</h3></div>
         <p class="who">For business owners checking their own company.</p>
-        <div class="price"><span class="amount">$49</span><s>$79</s><span>one time · launch price</span></div>
+        <div class="price"><span class="amount">$49</span><span>one time · launch price, $79 after launch</span></div>
         <span class="btn btn-secondary btn-soon">Checkout opens soon</span>
         <ul>
           <li>Dashboard with health score, grade and insights</li>
@@ -557,7 +556,7 @@
         </ul>
       </div>
     </div>
-    <p class="plans-note">One payment, no subscription. Includes all version 1 updates. All sales are final (see the <a href="terms.html">terms</a>), so try the free sample reports first. Each copy is licensed to its buyer, and the license is shown on the reports it makes.</p>
+    <p class="plans-note">Prices in Australian dollars. One payment, no subscription and no hidden fees. Includes all version 1 updates. Changed your mind? Get a full refund within 14 days if you haven't activated your license key yet (see the <a href="refunds.html">refund policy</a>). Each copy is licensed to its buyer, and the license is shown on the reports it makes.</p>
   </div>
 </section>
 
@@ -643,7 +642,7 @@
       </details>
       <details>
         <summary>Can I get a refund?<span class="pm" aria-hidden="true"></span></summary>
-        <div class="answer"><p>All sales are final, so try the free sample reports first. See the <a href="terms.html">terms</a>.</p></div>
+        <div class="answer"><p>Yes, if you haven't used it yet. You can get a full refund within 14 days of buying, as long as your license key hasn't been activated. After that, your rights under the Australian Consumer Law still apply if something is wrong with it. See the <a href="refunds.html">refund policy</a>.</p></div>
       </details>
       <details>
         <summary>Is the report financial advice?<span class="pm" aria-hidden="true"></span></summary>
@@ -658,7 +657,7 @@
     <div class="box">
       <span class="bolt" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M15.8 4.5 7.8 16h5.4l-1.8 7.5 8.8-12.2h-5.4z" fill="#4263EB"/></svg></span>
       <h2>Get Flash Analyst</h2>
-      <p>Basic is $49 at launch (regular price $79) and Pro is $149, paid once. Online checkout opens soon. Until then, try the free sample reports.</p>
+      <p>Basic is $49 at launch (going up to $79 later) and Pro is $149, paid once. Online checkout opens soon. Until then, try the free sample reports.</p>
       <div class="ctas">
         <a class="btn btn-primary btn-lg" href="#samples">See sample reports</a>
       </div>
@@ -687,10 +686,12 @@
         <a href="changelog.html">What's new</a>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="refunds.html">Refund Policy</a>
+        <a href="cookies.html">Cookie Policy</a>
       </nav>
     </div>
-    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C.</p>
-    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional.</p>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C. · Australia</p>
+    <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional. QuickBooks, Xero, Wave, FreshBooks, Sage, Zoho Books, Excel and Google Sheets are trademarks of their owners; Flash Analyst isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
 
