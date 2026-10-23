@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- security-meta -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-zs/Up6YojxygR/UOfwFkr8W0VqMsmkWAvPvNt+yhCFI=' 'sha256-GDFnROiHF3f1pz/GByZF0MHbc/CYH8oLS5zZQVyXH58='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.lemonsqueezy.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-zs/Up6YojxygR/UOfwFkr8W0VqMsmkWAvPvNt+yhCFI=' 'sha256-0AMC5Gr83eFaki+QpZZv/UYfPeVUhyzQKtotmVrNqS0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.lemonsqueezy.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- security-meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -179,7 +179,7 @@
         <a href="cookies.html">Cookie Policy</a>
       </nav>
     </div>
-    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Founded by George C. · Owned by Alex C. · Australia</p>
+    <p><b>Company Analysis in a Flash, The Future - Flash Analyst</b> · Flash Analyst Pty Ltd · ABN 65 703 332 772 · NSW, Australia · Founded by George C. · Owned by Alex C. · <a href="mailto:flashanalyst@gmail.com">flashanalyst@gmail.com</a></p>
     <p>Reports are for informational purposes only and are not financial or investment advice. Sample companies and their numbers are fictional. QuickBooks, Xero, Wave, FreshBooks, Sage, Zoho Books, Excel and Google Sheets are trademarks of their owners; Flash Analyst isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
@@ -244,7 +244,7 @@
     const reply = await lsPost("activate", { license_key: key, instance_name: "Browser on " + (navigator.platform || "device") });
     if (!reply.activated) {
       const err = reply.error || "the key wasn't accepted";
-      throw new Error(/limit/i.test(err) ? "This key is already in use on the maximum number of devices. Remove it from a device you no longer use, or contact support." : "License key not accepted: " + err + ".");
+      throw new Error(/limit/i.test(err) ? "This key is already in use on the maximum number of devices. Remove it from a device you no longer use, or email flashanalyst@gmail.com." : "License key not accepted: " + err + ".");
     }
     const meta = reply.meta || {}, id = (reply.instance || {}).id;
     const edition = meta.store_id === STORE.store_id ? editionOf(meta) : null;
@@ -262,7 +262,7 @@
       const reply = await lsPost("validate", { license_key: license.key, instance_id: license.instance_id });
       if (!reply.valid || (reply.meta || {}).store_id !== STORE.store_id) {
         license = null; store.del("fa-license");
-        $("lic-msg").textContent = "Your license is no longer valid. Contact support if this is a mistake.";
+        $("lic-msg").textContent = "Your license is no longer valid. Email flashanalyst@gmail.com if this is a mistake.";
       } else {
         license.checked_at = Date.now(); store.set("fa-license", license);
       }
